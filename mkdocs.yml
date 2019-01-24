@@ -1,0 +1,10 @@
+site_name: Team 5901 - Cougar Pack
+nav:
+    - Home: index.md
+    - FRC Programming Outline: design.md
+    - Commmands: commands.md
+    - Subsystems: subsystems.md
+    - Controller Mapping: controllers.md
+    - About: about.md
+
+theme: readthedocs
