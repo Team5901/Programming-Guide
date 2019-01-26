@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Commmands - Team 5901 - Cougar Pack</title>
+  <title>Programming Commmands - Team 5901 - Cougar Pack</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -17,7 +17,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Commmands";
+    var mkdocs_page_name = "Programming Commmands";
     var mkdocs_page_input_path = "commands.md";
     var mkdocs_page_url = null;
   </script>
@@ -58,9 +58,19 @@
     <a class="" href="../design/">FRC Programming Outline</a>
 	    </li>
           
+            <li class="toctree-l1">
+		
+    <a class="" href="../update/">Updating Hardware</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../basics/">Java Programming Basics</a>
+	    </li>
+          
             <li class="toctree-l1 current">
 		
-    <a class="current" href="./">Commmands</a>
+    <a class="current" href="./">Programming Commmands</a>
     <ul class="subnav">
             
     <li class="toctree-l2"><a href="#overview">Overview</a></li>
@@ -68,6 +78,8 @@
         <ul>
         
             <li><a class="toctree-l3" href="#creating-commands">Creating Commands</a></li>
+        
+            <li><a class="toctree-l3" href="#requiring-subsystems">Requiring Subsystems</a></li>
         
             <li><a class="toctree-l3" href="#calling-subsystem-methods">Calling Subsystem Methods</a></li>
         
@@ -81,12 +93,22 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="../subsystems/">Subsystems</a>
+    <a class="" href="../subsystems/">Programming Subsystems</a>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <a class="" href="../controllers/">Controller Mapping</a>
+    <a class="" href="../controllers/">Programming the Controller</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../vision/">Vision</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../pneumatics/">Pneumatics</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -116,7 +138,7 @@
     
       
     
-    <li>Commmands</li>
+    <li>Programming Commmands</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -132,24 +154,25 @@ Commands call methods of subsystems to execute a task.</p>
 <h2 id="creating-commands">Creating Commands</h2>
 <p>To create a command, right click subsystems in the explorer and select <strong><code>Create a new class/command</code></strong>. <br />
 Select  <strong><code>command</code></strong>, and then name the command appropriately: <strong>NAME</strong>Command. <br />
-For example, the command to stop an elevator should be named <strong>stopElevator</strong>Command.<br />
-<img alt="" src="../img/CreateCommand.JPG" /></p>
+For example, the command to stop an elevator should be named <strong><code>stopElevatorCommand</code></strong>.</p>
+<p><img alt="" src="../img/CreateCommand.JPG" /></p>
+<p>When you are done, a new .java file will be created under commands.</p>
+<h2 id="requiring-subsystems">Requiring Subsystems</h2>
+<p>The next thing to think about is if your command <strong><code>requires</code></strong> a subsystem.<br />
+Example: What happens if <strong><code>raiseElevatorCommand</code></strong> is run the same time as <strong><code>lowerElevatorCommand</code></strong>? <br />
+To ensure both never run at the same time, we should require the subsystem for both commands.</p>
+<p>If this command <strong><code>requires</code></strong> complete control of the subsystem, add the following code to this section (replace Elevator with subsystem name):</p>
+<pre><code>requires(Elevator);
+</code></pre>
+
 <h2 id="calling-subsystem-methods">Calling Subsystem Methods</h2>
-<p>The command requests the subsystem to perform a function.
-For example, stopElevatorCommand will call on subsystem Elevator, and it's method stopElevator using the following code</p>
-<pre><code>elevator.stopElevator();
+<p>The command requests the subsystem to perform a function, such as turn on a motor. <br />
+For example, the following code will call on subsystem <strong><code>Elevator</code></strong>, and it's method <strong><code>stopElevator</code></strong> using the following code:</p>
+<pre><code>Robot.elevator.stopElevator();
 </code></pre>
 
 <p>The next question is, where should this code be placed? See the next section for details.</p>
 <h2 id="code-placement">Code Placement</h2>
-<ul>
-<li><strong>public stopElevatorCommand()</strong> - If this command <strong><code>requires</code></strong> complete control of the subsystem, add the following code to this section (replace Elevator with subsystem name):</li>
-</ul>
-<pre><code>requires(Elevator);
-</code></pre>
-
-<p>Example: What happens if <strong><code>raiseElevatorCommand</code></strong> is run the same time as <strong><code>lowerElevatorCommand</code></strong>? <br />
-To ensure both never run at the same time, we should require the subsystem for both commands.</p>
 <ul>
 <li><strong>protected void initialize()</strong> - Code placed here will one run <strong>once</strong> when the command is run</li>
 <li><strong>protected void execute()</strong> - Code placed here will run <strong>continously</strong> as long as the command is running</li>
@@ -165,10 +188,10 @@ To ensure both never run at the same time, we should require the subsystem for b
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../subsystems/" class="btn btn-neutral float-right" title="Subsystems">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../subsystems/" class="btn btn-neutral float-right" title="Programming Subsystems">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../design/" class="btn btn-neutral" title="FRC Programming Outline"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../basics/" class="btn btn-neutral" title="Java Programming Basics"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -194,7 +217,7 @@ To ensure both never run at the same time, we should require the subsystem for b
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../design/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../basics/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
         <span style="margin-left: 15px"><a href="../subsystems/" style="color: #fcfcfc">Next &raquo;</a></span>

@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Controller Mapping - Team 5901 - Cougar Pack</title>
+  <title>Programming the Controller - Team 5901 - Cougar Pack</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -17,7 +17,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Controller Mapping";
+    var mkdocs_page_name = "Programming the Controller";
     var mkdocs_page_input_path = "controllers.md";
     var mkdocs_page_url = null;
   </script>
@@ -60,33 +60,55 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="../commands/">Commmands</a>
+    <a class="" href="../update/">Updating Hardware</a>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <a class="" href="../subsystems/">Subsystems</a>
+    <a class="" href="../basics/">Java Programming Basics</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../commands/">Programming Commmands</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../subsystems/">Programming Subsystems</a>
 	    </li>
           
             <li class="toctree-l1 current">
 		
-    <a class="current" href="./">Controller Mapping</a>
+    <a class="current" href="./">Programming the Controller</a>
     <ul class="subnav">
             
     <li class="toctree-l2"><a href="#overview">Overview</a></li>
     
         <ul>
         
-            <li><a class="toctree-l3" href="#creating-commands">Creating Commands</a></li>
+            <li><a class="toctree-l3" href="#creating-a-joystick-object">Creating a Joystick Object</a></li>
         
-            <li><a class="toctree-l3" href="#calling-subsystem-methods">Calling Subsystem Methods</a></li>
+            <li><a class="toctree-l3" href="#creating-button-objects">Creating Button Objects</a></li>
         
-            <li><a class="toctree-l3" href="#code-placement">Code Placement</a></li>
+            <li><a class="toctree-l3" href="#assigning-commands-to-buttons">Assigning Commands to Buttons</a></li>
+        
+            <li><a class="toctree-l3" href="#example-create-controller-and-a-button-that-will-run-the-command-raiseelevator">Example - Create controller and a button that will run the command raiseElevator</a></li>
         
         </ul>
     
 
     </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../vision/">Vision</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../pneumatics/">Pneumatics</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -116,7 +138,7 @@
     
       
     
-    <li>Controller Mapping</li>
+    <li>Programming the Controller</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -127,37 +149,66 @@
             <div class="section">
               
                 <h1 id="overview">Overview</h1>
-<p>Commands are used to execute robot functions. <br />
-Commands call methods of subsystems to execute a task.</p>
-<h2 id="creating-commands">Creating Commands</h2>
-<p>To create a command, right click subsystems in the explorer and select <strong><code>Create a new class/command</code></strong>. <br />
-Select  <strong><code>command</code></strong>, and then name the command appropriately: <strong>NAME</strong>Command. <br />
-For example, the command to stop an elevator should be named <strong>stopElevator</strong>Command.<br />
-<img alt="" src="../img/CreateCommand.JPG" /></p>
-<h2 id="calling-subsystem-methods">Calling Subsystem Methods</h2>
-<p>The command requests the subsystem to perform a function.
-For example, stopElevatorCommand will call on subsystem Elevator, and it's method stopElevator using the following code</p>
-<pre><code>elevator.stopElevator();
+<p>Controllers are operated by human players in order to command the robot.
+In this section, you will create the controller and button objects in Java.
+If you have completed the <a href="../commands/">command section</a>, you can then assign commands to specific button.</p>
+<h2 id="creating-a-joystick-object">Creating a Joystick Object</h2>
+<p>To create a <strong><code>joystick</code></strong>, you must declare the object and initialize it.</p>
+<p>The example below declares to the program that there is an object named CONTROLLERNAME that is a joystick. <br />
+This should be placed under publc class OI </p>
+<pre><code>public Joystick CONTROLLERNAME
 </code></pre>
 
-<p>The next question is, where should this code be placed? See the next section for details.</p>
-<h2 id="code-placement">Code Placement</h2>
-<ul>
-<li><strong>public stopElevatorCommand()</strong> - If this command <strong><code>requires</code></strong> complete control of the subsystem, add the following code to this section (replace Elevator with subsystem name):</li>
-</ul>
-<pre><code>requires(Elevator);
+<p>You must then instantiate (create) and object and assign it a port number. <br />
+The port number tells the computer which USB slot this controller should be in.</p>
+<pre><code>NAME = new Joystick(NUMBER)
 </code></pre>
 
-<p>Example: What happens if <strong><code>raiseElevatorCommand</code></strong> is run the same time as <strong><code>lowerElevatorCommand</code></strong>? <br />
-To ensure both never run at the same time, we should require the subsystem for both commands.</p>
-<ul>
-<li><strong>protected void initialize()</strong> - Code placed here will one run <strong>once</strong> when the command is run</li>
-<li><strong>protected void execute()</strong> - Code placed here will run <strong>continously</strong> as long as the command is running</li>
-<li><strong>protected void isFinished()</strong> - Code placed here determines <strong>when</strong> the command stops</li>
-<li><strong>protected void end()</strong> - Code placed here runs once the command is <strong>over</strong></li>
-<li><strong>protected void interrupted()</strong> - Code placed here runs if the commands is <strong>interrupted</strong> by another command that requires the subsystem</li>
-</ul>
-<p><img alt="" src="../img/CreatedCommand.JPG" /></p>
+<h2 id="creating-button-objects">Creating Button Objects</h2>
+<p>To create a <strong><code>button</code></strong>, you must declare the object and initialize it.
+Declaring tells the program that there is an object named NAME that is a button. This should be placed under <strong><code>public OI</code></strong>.
+Depending on the controller, each button (X,Y,A,B, etc.) is assigned to a number. </p>
+<p><img alt="" src="../img/xbox.JPG" /></p>
+<pre><code>JoystickButton buttonA = new JoystickButton(CONTROLLERNAME,BUTTONNUMBER)
+</code></pre>
+
+<p>Change BUTTONNUMBER to the number of the button you want.
+Change CONTROLLERNAME to the name of the controller you want to assign the button to.</p>
+<h2 id="assigning-commands-to-buttons">Assigning Commands to Buttons</h2>
+<p>NOTE: To complete this section, you must have completed the <a href="../commands/">command section</a> of the is guide.</p>
+<p>Depending on your design, you may want your buttons to behave differently.
+Here are 3 possible button types you can use, depending on your application.</p>
+<p><strong>whenPressed</strong> - Command starts when button is pressed, and it runs <strong>until</strong> the command's <strong><code>isFinished</code></strong> method is satisfied.</p>
+<pre><code>button.whenPressed(new ExampleCommand());
+</code></pre>
+
+<p><strong>whileHeld</strong> - Command runs while button is held down, and is <strong><code>interrupted</code></strong> once the button is released. The command will then run the command's interupted method.</p>
+<pre><code>button.whileHeld(new ExampleCommand());
+</code></pre>
+
+<p><strong>whenReleased</strong> - Start command when button is released, and run <strong>until</strong> the command's <strong><code>isFinished</code></strong> method is satisfied.</p>
+<pre><code>button.whenReleased(new ExampleCommand());
+</code></pre>
+
+<h2 id="example-create-controller-and-a-button-that-will-run-the-command-raiseelevator">Example - Create controller and a button that will run the command raiseElevator</h2>
+<pre><code>public class OI {
+
+    //Controller1 is a joystick
+    public Joystick Controller1;        
+
+    public OI() {
+
+        //Controller1 is assigned to USB port 0  
+        Controller1 = new Joystick(0);      
+
+        //ButtonY (button 4) is on Controller1,
+        JoystickButton buttonY = new JoystickButton(Controller1, 4);    
+
+        //Runs raiseElevator until button is released, which triggers raiseElevatorsCommand isInteruptted method
+        buttonY.whileHeld(new raiseElevatorCommand());                      
+    }
+}
+</code></pre>
               
             </div>
           </div>
@@ -165,10 +216,10 @@ To ensure both never run at the same time, we should require the subsystem for b
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../about/" class="btn btn-neutral float-right" title="About">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../vision/" class="btn btn-neutral float-right" title="Vision">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../subsystems/" class="btn btn-neutral" title="Subsystems"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../subsystems/" class="btn btn-neutral" title="Programming Subsystems"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -197,7 +248,7 @@ To ensure both never run at the same time, we should require the subsystem for b
         <span><a href="../subsystems/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../about/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../vision/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
