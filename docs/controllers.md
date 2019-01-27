@@ -1,39 +1,78 @@
 # Overview
-Commands are used to execute robot functions.   
-Commands call methods of subsystems to execute a task.
+Controllers are operated by human players in order to command the robot.
+In this section, you will create the controller and button objects in Java.
+If you have completed the [command section](commands.md), you can then assign commands to specific button.
 
-## Creating Commands
+![](img/FlowOI.JPG)
 
-To create a command, right click subsystems in the explorer and select **`Create a new class/command `**.   
-Select  **`command`**, and then name the command appropriately: **NAME**Command.   
-For example, the command to stop an elevator should be named **stopElevator**Command.  
-![](img/CreateCommand.JPG)
+## Creating a Joystick Object
 
-## Calling Subsystem Methods
-The command requests the subsystem to perform a function.
-For example, stopElevatorCommand will call on subsystem Elevator, and it's method stopElevator using the following code
+To create a **`joystick`**, you must declare the object and initialize it.
+
+The example below declares to the program that there is an object named CONTROLLERNAME that is a joystick.   
+This should be placed under publc class OI 
 
 ```
-elevator.stopElevator();
+public Joystick CONTROLLERNAME
 ```
 
-The next question is, where should this code be placed? See the next section for details.
-
-## Code Placement
-* **public stopElevatorCommand()** - If this command **`requires`** complete control of the subsystem, add the following code to this section (replace Elevator with subsystem name):
+You must then instantiate (create) and object and assign it a port number.   
+The port number tells the computer which USB slot this controller should be in.
 ```
-requires(Elevator);
+NAME = new Joystick(NUMBER)
 ```
-Example: What happens if **`raiseElevatorCommand`** is run the same time as **`lowerElevatorCommand`**?   
-To ensure both never run at the same time, we should require the subsystem for both commands.
 
-* **protected void initialize()** - Code placed here will one run **once** when the command is run
-* **protected void execute()** - Code placed here will run **continously** as long as the command is running
-* **protected void isFinished()** - Code placed here determines **when** the command stops
-* **protected void end()** - Code placed here runs once the command is **over**
-* **protected void interrupted()** - Code placed here runs if the commands is **interrupted** by another command that requires the subsystem
+## Creating Button Objects
 
-![](img/CreatedCommand.JPG)
+To create a **`button`**, you must declare the object and initialize it.
+Declaring tells the program that there is an object named NAME that is a button. This should be placed under **`public OI`**.
+Depending on the controller, each button (X,Y,A,B, etc.) is assigned to a number. 
+
+![](img/xbox.JPG)
+
+```
+JoystickButton buttonA = new JoystickButton(CONTROLLERNAME,BUTTONNUMBER)
+```
+Change BUTTONNUMBER to the number of the button you want.   
+Change CONTROLLERNAME to the name of the controller you want to assign the button to.
 
 
+## Assigning Commands to Buttons
 
+NOTE: To complete this section, you must have completed the [command section](commands.md) of the is guide.
+
+Depending on your design, you may want your buttons to behave differently.
+Here are 3 possible button types you can use, depending on your application.
+
+**whenPressed** - Command starts when button is pressed, and it runs **until** the command's **`isFinished`** method is satisfied.
+```
+button.whenPressed(new ExampleCommand());
+```
+
+**whileHeld** - Command runs while button is held down, and is **`interrupted`** once the button is released. The command will then run the command's interupted method.
+```
+button.whileHeld(new ExampleCommand());
+```
+
+**whenReleased** - Start command when button is released, and run **until** the command's **`isFinished`** method is satisfied.
+```
+button.whenReleased(new ExampleCommand());
+```
+
+
+## Example - Create controller and a button that will run the command raiseElevator
+
+In the example below, `controller1` is assigned to usb port `0`.   
+The `buttonY` corresponds to button `4` on the controller.
+```
+public class OI {
+
+    public Joystick Controller1;		
+
+    public OI() {
+		Controller1 = new Joystick(0);  	
+        JoystickButton buttonY = new JoystickButton(Controller1, 4);	
+        buttonY.whileHeld(new raiseElevatorCommand());						
+    }
+}
+```

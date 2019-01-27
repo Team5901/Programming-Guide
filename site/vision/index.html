@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>About - Team 5901 - Cougar Pack</title>
+  <title>Vision - Team 5901 - Cougar Pack</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -17,8 +17,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "About";
-    var mkdocs_page_input_path = "about.md";
+    var mkdocs_page_name = "Vision";
+    var mkdocs_page_input_path = "vision.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -83,9 +83,27 @@
     <a class="" href="../controllers/">Programming the Controller</a>
 	    </li>
           
-            <li class="toctree-l1">
+            <li class="toctree-l1 current">
 		
-    <a class="" href="../vision/">Vision</a>
+    <a class="current" href="./">Vision</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#overview">Overview</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#creating-commands">Creating Commands</a></li>
+        
+            <li><a class="toctree-l3" href="#requiring-subsystems">Requiring Subsystems</a></li>
+        
+            <li><a class="toctree-l3" href="#calling-subsystem-methods">Calling Subsystem Methods</a></li>
+        
+            <li><a class="toctree-l3" href="#code-placement">Code Placement</a></li>
+        
+        </ul>
+    
+
+    </ul>
 	    </li>
           
             <li class="toctree-l1">
@@ -93,12 +111,9 @@
     <a class="" href="../pneumatics/">Pneumatics</a>
 	    </li>
           
-            <li class="toctree-l1 current">
+            <li class="toctree-l1">
 		
-    <a class="current" href="./">About</a>
-    <ul class="subnav">
-            
-    </ul>
+    <a class="" href="../about/">About</a>
 	    </li>
           
         </ul>
@@ -123,7 +138,7 @@
     
       
     
-    <li>About</li>
+    <li>Vision</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -133,7 +148,39 @@
           <div role="main">
             <div class="section">
               
-                
+                <h1 id="overview">Overview</h1>
+<p>Commands are used to execute robot functions. <br />
+Commands call methods of subsystems to execute a task.</p>
+<h2 id="creating-commands">Creating Commands</h2>
+<p>To create a command, right click subsystems in the explorer and select <strong><code>Create a new class/command</code></strong>. <br />
+Select  <strong><code>command</code></strong>, and then name the command appropriately: <strong>NAME</strong>Command. <br />
+For example, the command to stop an elevator should be named <strong>stopElevator</strong>Command.</p>
+<p><img alt="" src="../img/CreateCommand.JPG" /></p>
+<p>When you are done, a new .java file will be created under commands.</p>
+<h2 id="requiring-subsystems">Requiring Subsystems</h2>
+<p>The next thing to think about is if your command <strong><code>requires</code></strong> a subsystem.<br />
+Example: What happens if <strong><code>raiseElevatorCommand</code></strong> is run the same time as <strong><code>lowerElevatorCommand</code></strong>? <br />
+To ensure both never run at the same time, we should require the subsystem for both commands.</p>
+<p>If this command <strong><code>requires</code></strong> complete control of the subsystem, add the following code to this section (replace Elevator with subsystem name):</p>
+<pre><code>requires(Elevator);
+</code></pre>
+
+<h2 id="calling-subsystem-methods">Calling Subsystem Methods</h2>
+<p>The command requests the subsystem to perform a function, such as turn on a motor. <br />
+For example, the following code will call on subsystem <strong><code>Elevator</code></strong>, and it's method <strong><code>stopElevator</code></strong> using the following code:</p>
+<pre><code>elevator.stopElevator();
+</code></pre>
+
+<p>The next question is, where should this code be placed? See the next section for details.</p>
+<h2 id="code-placement">Code Placement</h2>
+<ul>
+<li><strong>protected void initialize()</strong> - Code placed here will one run <strong>once</strong> when the command is run</li>
+<li><strong>protected void execute()</strong> - Code placed here will run <strong>continously</strong> as long as the command is running</li>
+<li><strong>protected void isFinished()</strong> - Code placed here determines <strong>when</strong> the command stops</li>
+<li><strong>protected void end()</strong> - Code placed here runs once the command is <strong>over</strong></li>
+<li><strong>protected void interrupted()</strong> - Code placed here runs if the commands is <strong>interrupted</strong> by another command that requires the subsystem</li>
+</ul>
+<p><img alt="" src="../img/CreatedCommand.JPG" /></p>
               
             </div>
           </div>
@@ -141,8 +188,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
+        <a href="../pneumatics/" class="btn btn-neutral float-right" title="Pneumatics">Next <span class="icon icon-circle-arrow-right"></span></a>
       
-        <a href="../pneumatics/" class="btn btn-neutral" title="Pneumatics"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+        <a href="../controllers/" class="btn btn-neutral" title="Programming the Controller"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -168,8 +217,10 @@
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../pneumatics/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../controllers/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
+      
+        <span style="margin-left: 15px"><a href="../pneumatics/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

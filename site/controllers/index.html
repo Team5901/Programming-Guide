@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Programming the Controller - Team 5901 - Cougar Pack</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Programming the Controller";
+    var mkdocs_page_input_path = "controllers.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Team 5901 - Cougar Pack</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../design/">FRC Programming Outline</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../update/">Updating Hardware</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../basics/">Java Programming Basics</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../commands/">Programming Commmands</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../subsystems/">Programming Subsystems</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">Programming the Controller</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#overview">Overview</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#creating-a-joystick-object">Creating a Joystick Object</a></li>
+        
+            <li><a class="toctree-l3" href="#creating-button-objects">Creating Button Objects</a></li>
+        
+            <li><a class="toctree-l3" href="#assigning-commands-to-buttons">Assigning Commands to Buttons</a></li>
+        
+            <li><a class="toctree-l3" href="#example-create-controller-and-a-button-that-will-run-the-command-raiseelevator">Example - Create controller and a button that will run the command raiseElevator</a></li>
+        
+        </ul>
+    
+
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../vision/">Vision</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../pneumatics/">Pneumatics</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../about/">About</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Team 5901 - Cougar Pack</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Programming the Controller</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="overview">Overview</h1>
+<p>Controllers are operated by human players in order to command the robot.
+In this section, you will create the controller and button objects in Java.
+If you have completed the <a href="../commands/">command section</a>, you can then assign commands to specific button.</p>
+<h2 id="creating-a-joystick-object">Creating a Joystick Object</h2>
+<p>To create a <strong><code>joystick</code></strong>, you must declare the object and initialize it.</p>
+<p>The example below declares to the program that there is an object named CONTROLLERNAME that is a joystick. <br />
+This should be placed under publc class OI </p>
+<pre><code>public Joystick CONTROLLERNAME
+</code></pre>
+
+<p>You must then instantiate (create) and object and assign it a port number. <br />
+The port number tells the computer which USB slot this controller should be in.</p>
+<pre><code>NAME = new Joystick(NUMBER)
+</code></pre>
+
+<h2 id="creating-button-objects">Creating Button Objects</h2>
+<p>To create a <strong><code>button</code></strong>, you must declare the object and initialize it.
+Declaring tells the program that there is an object named NAME that is a button. This should be placed under <strong><code>public OI</code></strong>.
+Depending on the controller, each button (X,Y,A,B, etc.) is assigned to a number. </p>
+<p><img alt="" src="../img/xbox.JPG" /></p>
+<pre><code>JoystickButton buttonA = new JoystickButton(CONTROLLERNAME,BUTTONNUMBER)
+</code></pre>
+
+<p>Change BUTTONNUMBER to the number of the button you want.
+Change CONTROLLERNAME to the name of the controller you want to assign the button to.</p>
+<h2 id="assigning-commands-to-buttons">Assigning Commands to Buttons</h2>
+<p>NOTE: To complete this section, you must have completed the <a href="../commands/">command section</a> of the is guide.</p>
+<p>Depending on your design, you may want your buttons to behave differently.
+Here are 3 possible button types you can use, depending on your application.</p>
+<p><strong>whenPressed</strong> - Command starts when button is pressed, and it runs <strong>until</strong> the command's <strong><code>isFinished</code></strong> method is satisfied.</p>
+<pre><code>button.whenPressed(new ExampleCommand());
+</code></pre>
+
+<p><strong>whileHeld</strong> - Command runs while button is held down, and is <strong><code>interrupted</code></strong> once the button is released. The command will then run the command's interupted method.</p>
+<pre><code>button.whileHeld(new ExampleCommand());
+</code></pre>
+
+<p><strong>whenReleased</strong> - Start command when button is released, and run <strong>until</strong> the command's <strong><code>isFinished</code></strong> method is satisfied.</p>
+<pre><code>button.whenReleased(new ExampleCommand());
+</code></pre>
+
+<h2 id="example-create-controller-and-a-button-that-will-run-the-command-raiseelevator">Example - Create controller and a button that will run the command raiseElevator</h2>
+<pre><code>public class OI {
+
+    //Controller1 is a joystick
+    public Joystick Controller1;        
+
+    public OI() {
+
+        //Controller1 is assigned to USB port 0  
+        Controller1 = new Joystick(0);      
+
+        //ButtonY (button 4) is on Controller1,
+        JoystickButton buttonY = new JoystickButton(Controller1, 4);    
+
+        //Runs raiseElevator until button is released, which triggers raiseElevatorsCommand isInteruptted method
+        buttonY.whileHeld(new raiseElevatorCommand());                      
+    }
+}
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../vision/" class="btn btn-neutral float-right" title="Vision">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../subsystems/" class="btn btn-neutral" title="Programming Subsystems"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../subsystems/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../vision/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

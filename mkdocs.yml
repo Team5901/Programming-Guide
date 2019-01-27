@@ -1,14 +1,15 @@
 site_name: Team 5901 - Cougar Pack
 nav:
     - Home: index.md
-    - FRC Programming Outline: design.md
-    - Updating Hardware: update.md    
+    - FRC Programming Outline (In Progress): design.md
     - Java Programming Basics: basics.md
     - Programming Commmands: commands.md
     - Programming Subsystems: subsystems.md
     - Programming the Controller: controllers.md
-    - Vision: vision.md  
+    - Programming Sensors: sensors.md    
+    - Vision (In Progress): vision.md  
     - Pneumatics: pneumatics.md     
+    - Updating Hardware: update.md    
     - About: about.md
 
 theme: readthedocs

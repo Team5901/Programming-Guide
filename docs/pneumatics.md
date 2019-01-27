@@ -1,7 +1,9 @@
-# Overview
+﻿# Overview
 This page summarizes the overall steps required to program a pneumatic system.
-Pneumatics are controlled by the Pneumatic Control Module, which is wired to the pneumatic components.
+Pneumatics are controlled by the Pneumatic Control Module (PCM), which is wired to the pneumatic components.
 Like any other actuator, the compressor and pneumatic solenoid (the thing that controls the cylinder ) need to be declared.
+
+Each pneumatic component is controlled based on the node it is plugged in on the PCM (0-7), as seen below:
 
 ![](img/PCM.JPG)
 
@@ -11,7 +13,7 @@ A compressor pumps air into the system.
 ![](img/Compressor.JPG)
 
 Instantiating a compressor
-The number corresponds with the Pneumatic Control Module (PCM) Node ID
+The number corresponds with the PCM Node ID.
 ```
 Compressor COMPRESSORNAME = new Compressor(0);
 ```

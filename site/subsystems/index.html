@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Programming Subsystems - Team 5901 - Cougar Pack</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Programming Subsystems";
+    var mkdocs_page_input_path = "subsystems.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Team 5901 - Cougar Pack</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../design/">FRC Programming Outline</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../update/">Updating Hardware</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../basics/">Java Programming Basics</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../commands/">Programming Commmands</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">Programming Subsystems</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#overview">Overview</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#creating-subsystems">Creating Subsystems</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l2"><a href="#adding-motor-controllerssensors">Adding Motor Controllers/Sensors</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#if-you-are-using-talonsrx">If you are using TalonSRX</a></li>
+        
+            <li><a class="toctree-l3" href="#if-you-are-using-victorspx">If you are using VictorSPX</a></li>
+        
+            <li><a class="toctree-l3" href="#creating-methods">Creating Methods</a></li>
+        
+        </ul>
+    
+
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../controllers/">Programming the Controller</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../vision/">Vision</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../pneumatics/">Pneumatics</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../about/">About</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Team 5901 - Cougar Pack</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Programming Subsystems</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="overview">Overview</h1>
+<p>Subsystems represent a major component of the robot, such as the drivetrain, an arm, or a shooter.
+The methods (or functions) within a subsystem control specific motors. </p>
+<p>In this section, you will create a subsytem and create motor controller/sensor objects.
+You will then create the methods that control these components.</p>
+<h2 id="creating-subsystems">Creating Subsystems</h2>
+<p>To create a subsystem, right click subsystems in the explorer and select <strong><code>Create a new class/command</code></strong>.
+Select  <strong><code>subsystem</code></strong>, and then name the subsystem appropriately.</p>
+<p><img alt="" src="../img/CreateSubsystem.JPG" /></p>
+<p>After you have finished, you have created a subsystem.<br />
+In the example below, I created a "Elevator" subsystem.</p>
+<p><img alt="" src="../img/CreatedSubsystem.JPG" /></p>
+<h1 id="adding-motor-controllerssensors">Adding Motor Controllers/Sensors</h1>
+<p>Now that we have a subsystem, we will need to define the motor controllers and sensors.<br />
+In Java, you must first create the object.<br />
+There are two things you need to know:
+<em> How many motor controllers do you need to add? (A 4 motor drivetrain requires 4 motor controllers)
+</em> What type of motor controller is being used? (TalonSRX, VictorSPX, Sparks, etc.)</p>
+<h3 id="if-you-are-using-talonsrx">If you are using TalonSRX</h3>
+<p><img alt="" src="../img/TalonSRX.JPG" /></p>
+<p>Declaration (assign variable name to object) - Place this under public class NAME extends Subsystem</p>
+<pre><code>private WPI_TalonSRX leftElevatorMotor;
+</code></pre>
+
+<p>Instantiate/Initializing (create an object)     <br />
+The number corresponds to the CANId of the motor controller.
+Place this </p>
+<pre><code>leftElevatorMotor = new WPI_TalonSRX(1);
+</code></pre>
+
+<h3 id="if-you-are-using-victorspx">If you are using VictorSPX</h3>
+<p><img alt="" src="../img/VictorSPX.JPG" /></p>
+<p>Declaration (assign variable name to object) - Place this under public class NAME extends Subsystem</p>
+<pre><code>private WPI_VictorSPX leftElevatorMotor;
+</code></pre>
+
+<p>Instantiate/Initializing (create an object)  <br />
+The number corresponds to the CANId of the motor controller.</p>
+<pre><code>leftElevatorMotor = new WPI_VictorSPX(1);
+</code></pre>
+
+<h2 id="creating-methods">Creating Methods</h2>
+<p>A method is a function of the subsystem.
+For example, some functions of an elevator may be to lift to a certain height, lower, or to stop.
+To make an elevator stop, the example method is created to stop the elevator.</p>
+<pre><code>public void stopElevator(){
+    leftElevatorMotor.set(0.0);
+}
+</code></pre>
+
+<p>This sets the elevator motor that we created earlier at 0 percent voltage.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../controllers/" class="btn btn-neutral float-right" title="Programming the Controller">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../commands/" class="btn btn-neutral" title="Programming Commmands"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../commands/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../controllers/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>
