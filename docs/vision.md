@@ -13,3 +13,13 @@ Team 5901 utilzes the Limelight Camera.
 Informating about mounting, wiring, imaging, and setting up the limelight
 
 <http://docs.limelightvision.io/en/latest/>
+
+
+```
+import edu.wpi.first.networktables.NetworkTableEntry;
+import edu.wpi.first.networktables.NetworkTableInstance;
+
+
+    public void robotInit() {
+       NetworkTableInstance.getDefault().getTable("limelight").getEntry("ledMode").setNumber(0);
+```

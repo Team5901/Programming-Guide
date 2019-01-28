@@ -1,61 +1,52 @@
 # Overview
-This page summarizes the overall steps required to program a robot.
-Programming is iterative - you may need to repeat many of these steps as the season continues.
+This page summarizes the overall steps required to program a robot.    
 
-
-## Design
+## Design Phase
 * Strategy - What is the team strategy for autonomous mode?
 * Subsystems 
 	* What subsystems will you have on your robot?
 	* What does each subsystem need to do?  
 	* What sensors should be used, if any?
+	* How many actuators does each subsystem need?
 * Controllers 
 	* How many controllers is needed to control this robot?
 	* What commands should be mapped to which buttons?
 
-## Programming
-* Motor Assignments
-	* Motor controller CAN IDs (Work with Electrical Team)
-	* Methods that control motors must be created
-* Commands need to be created
-	* Commands should call methods from subsystems
-* Autonomous routines need to be created	
-	* Will use CommandGroups of commands
-
-## Testing
-**Golden Rule: Your code doesnt work until you've tested it on the robot **
-
-## Example - 2017 Steamworks - Design
-* **Strategy** - Our team strategy is to start from three possible locations, meaning we need three different autonomous modes. We will try to place a gear in autonomous mode.
-* **Subsystems** 
-	* Drivetrain
-		* Sensors - Encoder (measure distance), Gyro (measure angle)
-		* Functions
-			* Drive Straight
-			* Turn to an angle
-			* Turbo speed
-			* Stop
-	* Intake
-		* Sensors - Encoder (measure how open intake is)
-			* Open intake
-			* Close intake
-* **Commands**
-	* Controllers 
-		* Controller 1 - Driving
-		* Controller 2 - Control intake
-
-## Example - 2017 Steamworks Programming
-* Subsystems need to be created
-	* Drivetrain motors (4x) - 1,2,3,4
-	* Intake motors (1x) - 5
-	* Create methods
-* Commands created
-* Autonomous routines 	
-	* Left Position Auto - Drive straight 1m, turn -60 degrees, drive straight 1m, open intake
-	* Middle Position Auto - Drive straight 1m, open intake
-	* Right Position Auto - Drive straight 1m, turn 60 degrees, drive straight 1m, open intake
+## Programming Phase
+* Subsystems
+	* Create objects (sensors.actuators, etc.) in Java
+	* Program methods to control
+* Commands need to be created, calling from subsystem methods
+* Autonomous routines need to be created (optional for 2019)
 
 
+## Testing 
+* Test code & fix bugs 
+* Look for new ways to do things smarter and more efficiently
+* **Golden Rule: Your code doesnt work until you've tested it on the robot **
+
+## Example
 
 
+Lets say we want to design an arm that will lift a game object.   
+The arm will squeeze ball with pistons, and then lift the ball.   
+From a programmer standpoint, here is an example of our thought process.   
 
+###### Design Phase
+* Our arm will need to lift a game piece to a certain height 
+	* This means you need at least one `motor` to lift your arm
+	* This means you may need a `sensor`, like an `encoder` so you know the height of your arm
+* Our arm will need to squeeze the ball with `pistons`
+	* We will need a `solenoid` to activate our pistons
+	* We will need an `air compressor` to generate air
+
+###### Programming Phase
+
+* Subsystems
+	* Need to create `motor controller`, `encoder` , `solenoid`, and `compressor` in Java
+	* Method/Command examples
+		* Lift Arm 
+		* Lower Arm
+		* Stop Arm
+		* Squeeze Ball
+		* Release Ball

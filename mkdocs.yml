@@ -1,14 +1,19 @@
 site_name: Team 5901 - Cougar Pack
 nav:
     - Home: index.md
-    - FRC Programming Outline (In Progress): design.md
+    - FRC Programming Outline: design.md
     - Java Programming Basics: basics.md
-    - Programming Commmands: commands.md
-    - Programming Subsystems: subsystems.md
-    - Programming the Controller: controllers.md
-    - Programming Sensors: sensors.md    
-    - Vision (In Progress): vision.md  
-    - Pneumatics: pneumatics.md     
+    - Basic Robot Code:
+        - Programming Commmands: commands.md
+        - Programming Subsystems: subsystems.md
+        - Programming the Controller: controllers.md
+    - Specialized Robot Code:      
+        - Programming Sensors (In Progress): sensors.md    
+        - Camera: camera.md    
+        - Vision (In Progress): vision.md  
+        - Pneumatics: pneumatics.md     
+        - Control Flow Statements (In Progress): control.md        
+        - Autonomous (In Progress): autonomous.md         
     - Updating Hardware: update.md    
     - About: about.md
 

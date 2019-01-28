@@ -31,15 +31,15 @@ There are two things you need to know:
 
 ![](img/TalonSRX.JPG)
 
-Declaration (assign variable name to object) - Place this under public class NAME extends Subsystem
+###### Declaration - Place this under public class NAME extends Subsystem
 ```
 private WPI_TalonSRX leftElevatorMotor;
 ```
 
 
-Instantiate/Initializing (create an object)       
+###### Instantiate/Initializing (create an object)       
 The number corresponds to the CANId of the motor controller.
-Place this 
+
 ```
 leftElevatorMotor = new WPI_TalonSRX(1);
 ```
@@ -48,12 +48,12 @@ leftElevatorMotor = new WPI_TalonSRX(1);
 
 ![](img/VictorSPX.JPG)
 
-Declaration (assign variable name to object) - Place this under public class NAME extends Subsystem
+###### Declaration - Place this under public class NAME extends Subsystem
 ```
 private WPI_VictorSPX leftElevatorMotor;
 ```
 
-Instantiate/Initializing (create an object)    
+###### Instantiate/Initializing (create an object)    
 The number corresponds to the CANId of the motor controller.
 ```
 leftElevatorMotor = new WPI_VictorSPX(1);

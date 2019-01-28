@@ -1,16 +1,18 @@
 # Overview
-For the FIRST Robotics competition, the team will use the programming language Java.
+For the FIRST Robotics competition, the team will use the programming language `Java`.   
 There are several rules we keep to try to keep our code clean and working.
 
 ## Key Project Files
-* Robot.Java - Main robot class run when robot boots up
-* OI.java - Maps commands to controller buttons
-* Command files - Contains instructions for using the subsystem
-* Subsystem files - Contain all the functions of a subsystem
 
-![](ProgramFlow/Comment.JPG)
+![](img/CodeStructure.JPG)
+
+* `Robot.java` - Main robot class run when robot boots up
+* `OI.java` - Operator Interface; Assigns `commands` to controller `buttons`
+* `Command files` - Requests action from `subsystem files`
+* `Subsystem files` - Contain all possible actions of the `subsystem`
 
 
+![](img/ProgramFlow.JPG)
 ## Programming Guidlines
 
 ![](img/Comment.JPG)
