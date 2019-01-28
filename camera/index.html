@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Vision (In Progress) - Team 5901 - Cougar Pack</title>
+  <title>Camera - Team 5901 - Cougar Pack</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -17,8 +17,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Vision (In Progress)";
-    var mkdocs_page_input_path = "vision.md";
+    var mkdocs_page_name = "Camera";
+    var mkdocs_page_input_path = "camera.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -90,25 +90,27 @@
                     
     <a class="" href="../sensors/">Programming Sensors (In Progress)</a>
                 </li>
-                <li class="">
-                    
-    <a class="" href="../camera/">Camera</a>
-                </li>
                 <li class=" current">
                     
-    <a class="current" href="./">Vision (In Progress)</a>
+    <a class="current" href="./">Camera</a>
     <ul class="subnav">
             
     <li class="toctree-l3"><a href="#overview">Overview</a></li>
     
         <ul>
         
-            <li><a class="toctree-l4" href="#getting-started">Getting Started</a></li>
+            <li><a class="toctree-l4" href="#importing">Importing</a></li>
+        
+            <li><a class="toctree-l4" href="#adding-a-camera">Adding a Camera</a></li>
         
         </ul>
     
 
     </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../vision/">Vision (In Progress)</a>
                 </li>
                 <li class="">
                     
@@ -161,7 +163,7 @@
         
       
     
-    <li>Vision (In Progress)</li>
+    <li>Camera</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -172,21 +174,26 @@
             <div class="section">
               
                 <h1 id="overview">Overview</h1>
-<p>Vision can be used to aim the robot. <br />
-It is most suitable to use when targets are easily distinguishable (bright yellow cubes, orange balls), or for games that have lots of vision targets.   </p>
-<p>Implementing vision has two steps: 
-<em> Vision detection (easy) - Camera can detect the target reliably without confusing it with surrounding o bjects
-</em> Vision integration (hard) - Combining vision with the robot</p>
-<p>Team 5901 utilzes the Limelight Camera.</p>
-<h2 id="getting-started">Getting Started</h2>
-<p>Informating about mounting, wiring, imaging, and setting up the limelight</p>
-<p><a href="http://docs.limelightvision.io/en/latest/">http://docs.limelightvision.io/en/latest/</a></p>
-<pre><code>import edu.wpi.first.networktables.NetworkTableEntry;
-import edu.wpi.first.networktables.NetworkTableInstance;
+<p>A camera is used to provide vision to the driver. <br />
+The camera is connected directly to the RoboRio via USB port.</p>
+<h2 id="importing">Importing</h2>
+<p>You will need to import some existing libraries to utilize the camera. <br />
+This will go at the top of <code>Robot.java</code> along with the other imports.</p>
+<pre><code>import edu.wpi.first.wpilibj.CameraServer;
+import edu.wpi.first.wpilibj.IterativeRobot;
+</code></pre>
 
+<h2 id="adding-a-camera">Adding a Camera</h2>
+<p>You will want to place this code when the Robot first starts up. <br />
+Hint: The first file run is <code>Robot.java</code>. What method within this file is run first?</p>
+<h6 id="declaration-start-recording">Declaration &amp; Start Recording</h6>
+<pre><code>USBCamera CAMERANAME = CameraServer.getInstance().startAutomaticCapture();
+</code></pre>
 
-    public void robotInit() {
-       NetworkTableInstance.getDefault().getTable(&quot;limelight&quot;).getEntry(&quot;ledMode&quot;).setNumber(0);
+<h6 id="change-resolution-and-frame-rate">Change Resolution and Frame Rate</h6>
+<p>There is a limit on wireless bandwidth, so one MAY need to adjust quality and frame rate (FPS).</p>
+<pre><code>camera1.setResolution(320, 240);
+camera1.setFPS(10);
 </code></pre>
               
             </div>
@@ -195,10 +202,10 @@ import edu.wpi.first.networktables.NetworkTableInstance;
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../pneumatics/" class="btn btn-neutral float-right" title="Pneumatics">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../vision/" class="btn btn-neutral float-right" title="Vision (In Progress)">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../camera/" class="btn btn-neutral" title="Camera"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../sensors/" class="btn btn-neutral" title="Programming Sensors (In Progress)"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -224,10 +231,10 @@ import edu.wpi.first.networktables.NetworkTableInstance;
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../camera/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../sensors/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../pneumatics/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../vision/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
