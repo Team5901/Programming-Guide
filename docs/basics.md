@@ -30,7 +30,6 @@ The exception to this rule is methods, which the first word is lowercase: raiseE
 
 4. **All statements must end with** **`;`**
 
-
 5. **Blocks of code are contained within brackets** **`{ }`**.    
 You can have blocks of code within blocks of code!    
 In the below example, the colored circles mark the beginning `{` and ending `}` of each block of code.   

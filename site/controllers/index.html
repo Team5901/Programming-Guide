@@ -60,55 +60,80 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="../update/">Updating Hardware</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
     <a class="" href="../basics/">Java Programming Basics</a>
 	    </li>
           
             <li class="toctree-l1">
 		
+    <span class="caption-text">Basic Robot Code</span>
+    <ul class="subnav">
+                <li class="">
+                    
     <a class="" href="../commands/">Programming Commmands</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
+                </li>
+                <li class="">
+                    
     <a class="" href="../subsystems/">Programming Subsystems</a>
-	    </li>
-          
-            <li class="toctree-l1 current">
-		
+                </li>
+                <li class=" current">
+                    
     <a class="current" href="./">Programming the Controller</a>
     <ul class="subnav">
             
-    <li class="toctree-l2"><a href="#overview">Overview</a></li>
+    <li class="toctree-l3"><a href="#overview">Overview</a></li>
     
         <ul>
         
-            <li><a class="toctree-l3" href="#creating-a-joystick-object">Creating a Joystick Object</a></li>
+            <li><a class="toctree-l4" href="#creating-a-joystick-object">Creating a Joystick Object</a></li>
         
-            <li><a class="toctree-l3" href="#creating-button-objects">Creating Button Objects</a></li>
+            <li><a class="toctree-l4" href="#creating-button-objects">Creating Button Objects</a></li>
         
-            <li><a class="toctree-l3" href="#assigning-commands-to-buttons">Assigning Commands to Buttons</a></li>
+            <li><a class="toctree-l4" href="#assigning-commands-to-buttons">Assigning Commands to Buttons</a></li>
         
-            <li><a class="toctree-l3" href="#example-create-controller-and-a-button-that-will-run-the-command-raiseelevator">Example - Create controller and a button that will run the command raiseElevator</a></li>
+            <li><a class="toctree-l4" href="#example-create-controller-and-a-button-that-will-run-the-command-raiseelevator">Example - Create controller and a button that will run the command raiseElevator</a></li>
         
         </ul>
     
 
     </ul>
+                </li>
+    </ul>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <a class="" href="../vision/">Vision</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
+    <span class="caption-text">Specialized Robot Code</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../sensors/">Programming Sensors (In Progress)</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../camera/">Camera</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../vision/">Vision (In Progress)</a>
+                </li>
+                <li class="">
+                    
     <a class="" href="../pneumatics/">Pneumatics</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../control/">Control Flow Statements (In Progress)</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../autonomous/">Autonomous (In Progress)</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../update/">Updating Hardware</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -137,6 +162,10 @@
     <li><a href="..">Docs</a> &raquo;</li>
     
       
+        
+          <li>Basic Robot Code &raquo;</li>
+        
+      
     
     <li>Programming the Controller</li>
     <li class="wy-breadcrumbs-aside">
@@ -152,6 +181,7 @@
 <p>Controllers are operated by human players in order to command the robot.
 In this section, you will create the controller and button objects in Java.
 If you have completed the <a href="../commands/">command section</a>, you can then assign commands to specific button.</p>
+<p><img alt="" src="../img/FlowOI.JPG" /></p>
 <h2 id="creating-a-joystick-object">Creating a Joystick Object</h2>
 <p>To create a <strong><code>joystick</code></strong>, you must declare the object and initialize it.</p>
 <p>The example below declares to the program that there is an object named CONTROLLERNAME that is a joystick. <br />
@@ -172,7 +202,7 @@ Depending on the controller, each button (X,Y,A,B, etc.) is assigned to a number
 <pre><code>JoystickButton buttonA = new JoystickButton(CONTROLLERNAME,BUTTONNUMBER)
 </code></pre>
 
-<p>Change BUTTONNUMBER to the number of the button you want.
+<p>Change BUTTONNUMBER to the number of the button you want. <br />
 Change CONTROLLERNAME to the name of the controller you want to assign the button to.</p>
 <h2 id="assigning-commands-to-buttons">Assigning Commands to Buttons</h2>
 <p>NOTE: To complete this section, you must have completed the <a href="../commands/">command section</a> of the is guide.</p>
@@ -191,20 +221,15 @@ Here are 3 possible button types you can use, depending on your application.</p>
 </code></pre>
 
 <h2 id="example-create-controller-and-a-button-that-will-run-the-command-raiseelevator">Example - Create controller and a button that will run the command raiseElevator</h2>
+<p>In the example below, <code>controller1</code> is assigned to usb port <code>0</code>. <br />
+The <code>buttonY</code> corresponds to button <code>4</code> on the controller.</p>
 <pre><code>public class OI {
 
-    //Controller1 is a joystick
     public Joystick Controller1;        
 
     public OI() {
-
-        //Controller1 is assigned to USB port 0  
         Controller1 = new Joystick(0);      
-
-        //ButtonY (button 4) is on Controller1,
         JoystickButton buttonY = new JoystickButton(Controller1, 4);    
-
-        //Runs raiseElevator until button is released, which triggers raiseElevatorsCommand isInteruptted method
         buttonY.whileHeld(new raiseElevatorCommand());                      
     }
 }
@@ -216,7 +241,7 @@ Here are 3 possible button types you can use, depending on your application.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../vision/" class="btn btn-neutral float-right" title="Vision">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../sensors/" class="btn btn-neutral float-right" title="Programming Sensors (In Progress)">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../subsystems/" class="btn btn-neutral" title="Programming Subsystems"><span class="icon icon-circle-arrow-left"></span> Previous</a>
@@ -248,7 +273,7 @@ Here are 3 possible button types you can use, depending on your application.</p>
         <span><a href="../subsystems/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../vision/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../sensors/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

@@ -58,11 +58,6 @@
     <a class="" href="../design/">FRC Programming Outline</a>
 	    </li>
           
-            <li class="toctree-l1">
-		
-    <a class="" href="../update/">Updating Hardware</a>
-	    </li>
-          
             <li class="toctree-l1 current">
 		
     <a class="current" href="./">Java Programming Basics</a>
@@ -84,27 +79,57 @@
           
             <li class="toctree-l1">
 		
+    <span class="caption-text">Basic Robot Code</span>
+    <ul class="subnav">
+                <li class="">
+                    
     <a class="" href="../commands/">Programming Commmands</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
+                </li>
+                <li class="">
+                    
     <a class="" href="../subsystems/">Programming Subsystems</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
+                </li>
+                <li class="">
+                    
     <a class="" href="../controllers/">Programming the Controller</a>
+                </li>
+    </ul>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <a class="" href="../vision/">Vision</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
+    <span class="caption-text">Specialized Robot Code</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../sensors/">Programming Sensors (In Progress)</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../camera/">Camera</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../vision/">Vision (In Progress)</a>
+                </li>
+                <li class="">
+                    
     <a class="" href="../pneumatics/">Pneumatics</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../control/">Control Flow Statements (In Progress)</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../autonomous/">Autonomous (In Progress)</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../update/">Updating Hardware</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -145,15 +170,17 @@
             <div class="section">
               
                 <h1 id="overview">Overview</h1>
-<p>For the FIRST Robotics competition, the team will use the programming language Java.
+<p>For the FIRST Robotics competition, the team will use the programming language <code>Java</code>. <br />
 There are several rules we keep to try to keep our code clean and working.</p>
 <h2 id="key-project-files">Key Project Files</h2>
+<p><img alt="" src="../img/CodeStructure.JPG" /></p>
 <ul>
-<li>Robot.Java - Main robot class run when robot boots up</li>
-<li>OI.java - Maps commands to controller buttons</li>
-<li>Command files - Contains instructions for using the subsystem</li>
-<li>Subsystem files - Contain all the functions of a subsystem</li>
+<li><code>Robot.java</code> - Main robot class run when robot boots up</li>
+<li><code>OI.java</code> - Operator Interface; Assigns <code>commands</code> to controller <code>buttons</code></li>
+<li><code>Command files</code> - Requests action from <code>subsystem files</code></li>
+<li><code>Subsystem files</code> - Contain all possible actions of the <code>subsystem</code></li>
 </ul>
+<p><img alt="" src="../img/ProgramFlow.JPG" /></p>
 <h2 id="programming-guidlines">Programming Guidlines</h2>
 <p><img alt="" src="../img/Comment.JPG" /></p>
 <ol>
@@ -192,7 +219,7 @@ The blue block of code is completely seperate.   </p>
         <a href="../commands/" class="btn btn-neutral float-right" title="Programming Commmands">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../update/" class="btn btn-neutral" title="Updating Hardware"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../design/" class="btn btn-neutral" title="FRC Programming Outline"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -218,7 +245,7 @@ The blue block of code is completely seperate.   </p>
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../update/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../design/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
         <span style="margin-left: 15px"><a href="../commands/" style="color: #fcfcfc">Next &raquo;</a></span>

@@ -2,8 +2,8 @@ site_name: Team 5901 - Cougar Pack
 nav:
     - Home: index.md
     - FRC Programming Outline: design.md
-    - Java Programming Basics: basics.md
     - Basic Robot Code:
+        - Programming Basics: basics.md
         - Programming Commmands: commands.md
         - Programming Subsystems: subsystems.md
         - Programming the Controller: controllers.md
@@ -12,7 +12,7 @@ nav:
         - Camera: camera.md    
         - Vision (In Progress): vision.md  
         - Pneumatics: pneumatics.md     
-        - Control Flow Statements (In Progress): control.md        
+        - Control Flow Statements: control.md        
         - Autonomous (In Progress): autonomous.md         
     - Updating Hardware: update.md    
     - About: about.md

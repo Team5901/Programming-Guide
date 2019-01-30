@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Vision (In Progress) - Team 5901 - Cougar Pack</title>
+  <title>Control Flow Statements (In Progress) - Team 5901 - Cougar Pack</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -17,8 +17,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Vision (In Progress)";
-    var mkdocs_page_input_path = "vision.md";
+    var mkdocs_page_name = "Control Flow Statements (In Progress)";
+    var mkdocs_page_input_path = "control.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -94,29 +94,33 @@
                     
     <a class="" href="../camera/">Camera</a>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../vision/">Vision (In Progress)</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../pneumatics/">Pneumatics</a>
+                </li>
                 <li class=" current">
                     
-    <a class="current" href="./">Vision (In Progress)</a>
+    <a class="current" href="./">Control Flow Statements (In Progress)</a>
     <ul class="subnav">
             
     <li class="toctree-l3"><a href="#overview">Overview</a></li>
     
         <ul>
         
-            <li><a class="toctree-l4" href="#getting-started">Getting Started</a></li>
+            <li><a class="toctree-l4" href="#operators">Operators</a></li>
+        
+            <li><a class="toctree-l4" href="#if-then-else">If-Then-Else</a></li>
+        
+            <li><a class="toctree-l4" href="#example">Example</a></li>
         
         </ul>
     
 
     </ul>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../pneumatics/">Pneumatics</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../control/">Control Flow Statements (In Progress)</a>
                 </li>
                 <li class="">
                     
@@ -161,7 +165,7 @@
         
       
     
-    <li>Vision (In Progress)</li>
+    <li>Control Flow Statements (In Progress)</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -172,21 +176,66 @@
             <div class="section">
               
                 <h1 id="overview">Overview</h1>
-<p>Vision can be used to aim the robot. <br />
-It is most suitable to use when targets are easily distinguishable (bright yellow cubes, orange balls), or for games that have lots of vision targets.   </p>
-<p>Implementing vision has two steps: 
-<em> Vision detection (easy) - Camera can detect the target reliably without confusing it with surrounding o bjects
-</em> Vision integration (hard) - Combining vision with the robot</p>
-<p>Team 5901 utilzes the Limelight Camera.</p>
-<h2 id="getting-started">Getting Started</h2>
-<p>Informating about mounting, wiring, imaging, and setting up the limelight</p>
-<p><a href="http://docs.limelightvision.io/en/latest/">http://docs.limelightvision.io/en/latest/</a></p>
-<pre><code>import edu.wpi.first.networktables.NetworkTableEntry;
-import edu.wpi.first.networktables.NetworkTableInstance;
+<p>Control flow statements are used to run pieces of code that are dependent on the situation.   </p>
+<ul>
+<li>Example 1: You want to run a different autonomous mode depending on your starting location</li>
+<li>Example 2: You want to stop the robot elevator from rising past a certain point</li>
+</ul>
+<p>To do this, you will need to add logic.
+For FRC, you will typically only need if-then-else statements.</p>
+<h6 id="operators">Operators</h6>
+<table>
+<thead>
+<tr>
+<th align="left">Operator</th>
+<th align="left">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">&amp;&amp;</td>
+<td align="left">AND</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">==</td>
+<td align="left">Equal to</td>
+</tr>
+<tr>
+<td align="left">&gt;=</td>
+<td align="left">Greater than or equal to</td>
+</tr>
+<tr>
+<td align="left">&lt;=</td>
+<td align="left">Less than or equal to</td>
+</tr>
+</tbody>
+</table>
+<h6 id="if-then-else">If-Then-Else</h6>
+<pre><code>if (CONDITION1) {   
+    CODE_BLOCK_1     
+} else {
+    CODE_BLOCK_2
+}
+</code></pre>
 
-
-    public void robotInit() {
-       NetworkTableInstance.getDefault().getTable(&quot;limelight&quot;).getEntry(&quot;ledMode&quot;).setNumber(0);
+<p>If CONDITION1 is <code>true</code>, then the code between <code>{</code> and <code>}</code> is run (<code>CODE_BLOCK_1</code>). <br />
+If <code>false</code>, the code between <code>{</code> and <code>}</code> after the else is run (<code>CODE_BLOCK_2</code>).</p>
+<h6 id="example">Example</h6>
+<pre><code>    if (testscore &gt;= 90) {
+        grade = 'A';
+    } else if (testscore &gt;= 80) {
+        grade = 'B';
+    } else if (testscore &gt;= 70) {
+        grade = 'C';
+    } else if (testscore &gt;= 60) {
+        grade = 'D';
+    } else {
+        grade = 'F';
+    }
 </code></pre>
               
             </div>
@@ -195,10 +244,10 @@ import edu.wpi.first.networktables.NetworkTableInstance;
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../pneumatics/" class="btn btn-neutral float-right" title="Pneumatics">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../autonomous/" class="btn btn-neutral float-right" title="Autonomous (In Progress)">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../camera/" class="btn btn-neutral" title="Camera"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../pneumatics/" class="btn btn-neutral" title="Pneumatics"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -224,10 +273,10 @@ import edu.wpi.first.networktables.NetworkTableInstance;
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../camera/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../pneumatics/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../pneumatics/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../autonomous/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

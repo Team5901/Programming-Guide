@@ -12,7 +12,7 @@ For FRC, you will typically only need if-then-else statements.
 Operator | Meaning | 
 :----------- |:-------------| 
 &&         	| AND       					 | 
-||         	| OR       						 | 
+\|\|         	| OR (Shift + \\)      						 | 
 ==			| Equal to     				  	 | 
 >=			| Greater than or equal to       | 
 <=			| Less than or equal to      	 | 
@@ -21,13 +21,11 @@ Operator | Meaning |
 ###### If-Then-Else
 ```
 if (CONDITION1) {	
-	CODE_BLOCK_1	 
+	CODE_BLOCK_1	 // This code runs if CONDITION1 is TRUE
 } else {
-	CODE_BLOCK_2
+	CODE_BLOCK_2	// This code runs if CONDITION1 is FALSE
 }
 ```
-If CONDITION1 is `true`, then the code between `{` and `}` is run (`CODE_BLOCK_1`).   
-If `false`, the code between `{` and `}` after the else is run (`CODE_BLOCK_2`).
 
 ###### Example
 ```

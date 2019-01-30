@@ -60,62 +60,89 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="../update/">Updating Hardware</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
     <a class="" href="../basics/">Java Programming Basics</a>
 	    </li>
           
             <li class="toctree-l1">
 		
+    <span class="caption-text">Basic Robot Code</span>
+    <ul class="subnav">
+                <li class="">
+                    
     <a class="" href="../commands/">Programming Commmands</a>
-	    </li>
-          
-            <li class="toctree-l1 current">
-		
+                </li>
+                <li class=" current">
+                    
     <a class="current" href="./">Programming Subsystems</a>
     <ul class="subnav">
             
-    <li class="toctree-l2"><a href="#overview">Overview</a></li>
+    <li class="toctree-l3"><a href="#overview">Overview</a></li>
     
         <ul>
         
-            <li><a class="toctree-l3" href="#creating-subsystems">Creating Subsystems</a></li>
+            <li><a class="toctree-l4" href="#creating-subsystems">Creating Subsystems</a></li>
         
         </ul>
     
 
-    <li class="toctree-l2"><a href="#adding-motor-controllerssensors">Adding Motor Controllers/Sensors</a></li>
+    <li class="toctree-l3"><a href="#adding-motor-controllerssensors">Adding Motor Controllers/Sensors</a></li>
     
         <ul>
         
-            <li><a class="toctree-l3" href="#if-you-are-using-talonsrx">If you are using TalonSRX</a></li>
+            <li><a class="toctree-l4" href="#if-you-are-using-talonsrx">If you are using TalonSRX</a></li>
         
-            <li><a class="toctree-l3" href="#if-you-are-using-victorspx">If you are using VictorSPX</a></li>
+            <li><a class="toctree-l4" href="#if-you-are-using-victorspx">If you are using VictorSPX</a></li>
         
-            <li><a class="toctree-l3" href="#creating-methods">Creating Methods</a></li>
+            <li><a class="toctree-l4" href="#creating-methods">Creating Methods</a></li>
+        
+            <li><a class="toctree-l4" href="#default-commands">Default Commands</a></li>
         
         </ul>
     
 
     </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
+                </li>
+                <li class="">
+                    
     <a class="" href="../controllers/">Programming the Controller</a>
+                </li>
+    </ul>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <a class="" href="../vision/">Vision</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
+    <span class="caption-text">Specialized Robot Code</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../sensors/">Programming Sensors (In Progress)</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../camera/">Camera</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../vision/">Vision (In Progress)</a>
+                </li>
+                <li class="">
+                    
     <a class="" href="../pneumatics/">Pneumatics</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../control/">Control Flow Statements (In Progress)</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../autonomous/">Autonomous (In Progress)</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../update/">Updating Hardware</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -144,6 +171,10 @@
     <li><a href="..">Docs</a> &raquo;</li>
     
       
+        
+          <li>Basic Robot Code &raquo;</li>
+        
+      
     
     <li>Programming Subsystems</li>
     <li class="wy-breadcrumbs-aside">
@@ -160,6 +191,7 @@
 The methods (or functions) within a subsystem control specific motors. </p>
 <p>In this section, you will create a subsytem and create motor controller/sensor objects.
 You will then create the methods that control these components.</p>
+<p><img alt="" src="../img/FlowSubsystem.JPG" /></p>
 <h2 id="creating-subsystems">Creating Subsystems</h2>
 <p>To create a subsystem, right click subsystems in the explorer and select <strong><code>Create a new class/command</code></strong>.
 Select  <strong><code>subsystem</code></strong>, and then name the subsystem appropriately.</p>
@@ -175,24 +207,23 @@ There are two things you need to know:
 </em> What type of motor controller is being used? (TalonSRX, VictorSPX, Sparks, etc.)</p>
 <h3 id="if-you-are-using-talonsrx">If you are using TalonSRX</h3>
 <p><img alt="" src="../img/TalonSRX.JPG" /></p>
-<p>Declaration (assign variable name to object) - Place this under public class NAME extends Subsystem</p>
+<h6 id="declaration-place-this-under-public-class-name-extends-subsystem">Declaration - Place this under public class NAME extends Subsystem</h6>
 <pre><code>private WPI_TalonSRX leftElevatorMotor;
 </code></pre>
 
-<p>Instantiate/Initializing (create an object)     <br />
-The number corresponds to the CANId of the motor controller.
-Place this </p>
+<h6 id="instantiateinitializing-create-an-object">Instantiate/Initializing (create an object)</h6>
+<p>The number corresponds to the CANId of the motor controller.</p>
 <pre><code>leftElevatorMotor = new WPI_TalonSRX(1);
 </code></pre>
 
 <h3 id="if-you-are-using-victorspx">If you are using VictorSPX</h3>
 <p><img alt="" src="../img/VictorSPX.JPG" /></p>
-<p>Declaration (assign variable name to object) - Place this under public class NAME extends Subsystem</p>
+<h6 id="declaration-place-this-under-public-class-name-extends-subsystem_1">Declaration - Place this under public class NAME extends Subsystem</h6>
 <pre><code>private WPI_VictorSPX leftElevatorMotor;
 </code></pre>
 
-<p>Instantiate/Initializing (create an object)  <br />
-The number corresponds to the CANId of the motor controller.</p>
+<h6 id="instantiateinitializing-create-an-object_1">Instantiate/Initializing (create an object)</h6>
+<p>The number corresponds to the CANId of the motor controller.</p>
 <pre><code>leftElevatorMotor = new WPI_VictorSPX(1);
 </code></pre>
 
@@ -206,6 +237,14 @@ To make an elevator stop, the example method is created to stop the elevator.</p
 </code></pre>
 
 <p>This sets the elevator motor that we created earlier at 0 percent voltage.</p>
+<h2 id="default-commands">Default Commands</h2>
+<p>Each subsystem can be assigned a default command. 
+If a subsystem is not running anything, the default command will always be run.</p>
+<p><strong>When would you want this?</strong>
+When you want something to always be running by default. For example, our drivetrain command always runs a <code>DefaultDrive</code> command that constantly checks to see if the joystick value has changed.</p>
+<p>If you need to have a default command, add the following code to <code>public void initDefaultCommand()</code></p>
+<pre><code>setDefaultCommand(new COMMANDNAME));
+</code></pre>
               
             </div>
           </div>

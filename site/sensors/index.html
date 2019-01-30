@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Vision (In Progress) - Team 5901 - Cougar Pack</title>
+  <title>Programming Sensors (In Progress) - Team 5901 - Cougar Pack</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -17,8 +17,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Vision (In Progress)";
-    var mkdocs_page_input_path = "vision.md";
+    var mkdocs_page_name = "Programming Sensors (In Progress)";
+    var mkdocs_page_input_path = "sensors.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -86,29 +86,34 @@
 		
     <span class="caption-text">Specialized Robot Code</span>
     <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../sensors/">Programming Sensors (In Progress)</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../camera/">Camera</a>
-                </li>
                 <li class=" current">
                     
-    <a class="current" href="./">Vision (In Progress)</a>
+    <a class="current" href="./">Programming Sensors (In Progress)</a>
     <ul class="subnav">
             
     <li class="toctree-l3"><a href="#overview">Overview</a></li>
     
         <ul>
         
-            <li><a class="toctree-l4" href="#getting-started">Getting Started</a></li>
+            <li><a class="toctree-l4" href="#gyros">Gyros</a></li>
+        
+            <li><a class="toctree-l4" href="#encoders">Encoders</a></li>
         
         </ul>
     
 
+    <li class="toctree-l3"><a href="#limit-switch">Limit Switch</a></li>
+    
+
     </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../camera/">Camera</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../vision/">Vision (In Progress)</a>
                 </li>
                 <li class="">
                     
@@ -161,7 +166,7 @@
         
       
     
-    <li>Vision (In Progress)</li>
+    <li>Programming Sensors (In Progress)</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -172,21 +177,93 @@
             <div class="section">
               
                 <h1 id="overview">Overview</h1>
-<p>Vision can be used to aim the robot. <br />
-It is most suitable to use when targets are easily distinguishable (bright yellow cubes, orange balls), or for games that have lots of vision targets.   </p>
-<p>Implementing vision has two steps: 
-<em> Vision detection (easy) - Camera can detect the target reliably without confusing it with surrounding o bjects
-</em> Vision integration (hard) - Combining vision with the robot</p>
-<p>Team 5901 utilzes the Limelight Camera.</p>
-<h2 id="getting-started">Getting Started</h2>
-<p>Informating about mounting, wiring, imaging, and setting up the limelight</p>
-<p><a href="http://docs.limelightvision.io/en/latest/">http://docs.limelightvision.io/en/latest/</a></p>
-<pre><code>import edu.wpi.first.networktables.NetworkTableEntry;
-import edu.wpi.first.networktables.NetworkTableInstance;
+<p>Sensors are used to help the Robot understand the world around it.</p>
+<h2 id="gyros">Gyros</h2>
+<p><img alt="" src="../img/ADRSX450.JPG" /></p>
+<p>Gyros measure heading of the robot to determine what direction it is going in. <br />
+0 Degrees is defined as the angle the robot was facing when the gyro was last reset.</p>
+<p><img alt="" src="../img/Heading.JPG" /></p>
+<h6 id="declaration-under-public-class-subsystem-extends-subsystem">Declaration (under public class SUBSYSTEM extends Subsystem)</h6>
+<pre><code>public static ADXRS450_Gyro GYRONAME;
+</code></pre>
 
+<h6 id="instantiation">Instantiation</h6>
+<pre><code>GYRONAME = new ADXRS450_Gyro();
+</code></pre>
 
-    public void robotInit() {
-       NetworkTableInstance.getDefault().getTable(&quot;limelight&quot;).getEntry(&quot;ledMode&quot;).setNumber(0);
+<h6 id="usage">Usage</h6>
+<pre><code>GYRONAME.getAngle();    //Returns Gyro Angle relative to last reset heading
+GYRONAME.reset();       //Sets current heading to 0 degrees
+</code></pre>
+
+<h2 id="encoders">Encoders</h2>
+<p>Encoders count the revolutions of an axle.
+By understanding how many times an axle/wheel rotates, we can estimate the distance traveled.</p>
+<h3 id="amt103-v-5901s-drivetrain-encoder">AMT103-V - 5901's Drivetrain Encoder</h3>
+<p><img alt="" src="../img/AMT103-V.JPG" /></p>
+<p>5901 has used this encoder as a drivetrain encoder for years.</p>
+<h6 id="declaration-under-public-class-subsystem-extends-subsystem_1">Declaration (under public class SUBSYSTEM extends Subsystem)</h6>
+<pre><code>public static Encoder leftEncoder;
+
+</code></pre>
+
+<h6 id="instantiation_1">Instantiation</h6>
+<pre><code>leftEncoder = new Encoder(0, 1, false, Encoder.EncodingType.k1X);   
+</code></pre>
+
+<h6 id="parameter-setting">Parameter Setting</h6>
+<pre><code>static double diameter = MEASURE_THIS; // inches
+static double distancePerRev = diameter * Math.PI;    
+static int ticksPerRev = 2048; // what you set them to , before was 2048
+
+leftEncoder = new Encoder(0, 1, false, Encoder.EncodingType.k1X);        
+leftEncoder.setDistancePerPulse(distancePerRev / ticksPerRev);          
+leftEncoder.setReverseDirection(true);      //Depends on if your mechanism runs counterclockwise or clockwise
+leftEncoder.setMaxPeriod(.1);
+leftEncoder.setMinRate(10); 
+leftEncoder.setSamplesToAverage(7);
+</code></pre>
+
+<h3 id="ctre-magnetic-encoder-5901s-mechanism-encoder">CTRE Magnetic Encoder - 5901's Mechanism Encoder</h3>
+<h6 id="declaration-under-public-class-subsystem-extends-subsystem_2">Declaration (under public class SUBSYSTEM extends Subsystem)</h6>
+<pre><code>None! CTRE encoders are wired directly into a TalonSRX, which serves as the object
+</code></pre>
+
+<h6 id="parameter-setting_1">Parameter Setting</h6>
+<pre><code>TALONNAME.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Absolute, 0,0);
+TALONNAME.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0,0);
+</code></pre>
+
+<pre><code>
+//Set current position to 0
+int sensorPos=0;
+elevatorEbony1.setSelectedSensorPosition(sensorPos, 0,10);
+
+elevatorEbony1.configOpenloopRamp(1.5,0);
+elevatorIvory7.configOpenloopRamp(1.5,0);
+
+elevatorIvory7.set(com.ctre.phoenix.motorcontrol.ControlMode.Follower, 1);
+
+elevatorEbony1.configForwardSoftLimitThreshold(36000,0);
+elevatorEbony1.configReverseSoftLimitThreshold(0,0);
+elevatorEbony1.configForwardSoftLimitEnable(true, 0);
+elevatorEbony1.configReverseSoftLimitEnable(true, 0);
+
+        elevatorEbony1.configNominalOutputForward(0, 0);
+elevatorEbony1.configNominalOutputReverse(0, 0);
+elevatorIvory7.configNominalOutputForward(0, 0);
+elevatorIvory7.configNominalOutputReverse(0, 0);
+elevatorEbony1.configPeakOutputForward(.5,0);    
+elevatorEbony1.configPeakOutputReverse(-.5,0);
+elevatorIvory7.configPeakOutputForward(.5,0);    
+elevatorIvory7.configPeakOutputReverse(-.5,0);
+</code></pre>
+
+<h1 id="limit-switch">Limit Switch</h1>
+<pre><code>public static DigitalInput elevatorUppyBoi6;
+public static DigitalInput elevatorlowyBoi7;
+elevatorUppyBoi6 = new DigitalInput(6);
+
 </code></pre>
               
             </div>
@@ -195,10 +272,10 @@ import edu.wpi.first.networktables.NetworkTableInstance;
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../pneumatics/" class="btn btn-neutral float-right" title="Pneumatics">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../camera/" class="btn btn-neutral float-right" title="Camera">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../camera/" class="btn btn-neutral" title="Camera"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../controllers/" class="btn btn-neutral" title="Programming the Controller"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -224,10 +301,10 @@ import edu.wpi.first.networktables.NetworkTableInstance;
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../camera/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../controllers/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../pneumatics/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../camera/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
