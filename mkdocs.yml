@@ -4,8 +4,8 @@ nav:
     - FRC Programming Outline: design.md
     - Basic Robot Code:
         - Programming Basics: basics.md
-        - Programming Commmands: commands.md
         - Programming Subsystems: subsystems.md
+        - Programming Commmands: commands.md
         - Programming the Controller: controllers.md
     - Specialized Robot Code:      
         - Programming Sensors (In Progress): sensors.md    

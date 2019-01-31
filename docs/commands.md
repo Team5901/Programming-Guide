@@ -14,13 +14,16 @@ For example, the command to stop an elevator should be named **`stopElevatorComm
 
 When you are done, a new .java file will be created under commands.
 
-## Requiring Subsystems
+## Requiring Subsystems - Do I need to?
 
 The next thing to think about is if your command **`requires`** a subsystem.  
+A command the `requires` a subsystem will automatically interrupt any other command that subsystem is running if needed.
+
 Example: What happens if **`raiseElevatorCommand`** is run the same time as **`lowerElevatorCommand`**?   
+
 To ensure both never run at the same time, we should require the subsystem for both commands.
 
-If this command **`requires`** complete control of the subsystem, add the following code to this section (replace Elevator with subsystem name):
+If this command **`requires`** complete control of the subsystem, add the following code under `public COMMANDNAME()`
 ```
 requires(Elevator);
 ```
@@ -41,7 +44,7 @@ The next question is, where should this code be placed? See the next section for
 * **protected void execute()** - Code placed here will run **continously** as long as the command is running
 * **protected void isFinished()** - Code placed here determines **when** the command stops
 * **protected void end()** - Code placed here runs once the command is **over**
-* **protected void interrupted()** - Code placed here runs if the commands is **interrupted** by another command that requires the subsystem
+* **protected void interrupted()** - Code placed here runs if the commands is **interrupted** by another command that requires the subsystem. Most of the time, you should run the `end()` command in this method.
 
 ![](img/CreatedCommand.JPG)
 

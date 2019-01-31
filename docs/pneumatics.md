@@ -39,6 +39,8 @@ double current = COMPRESSORNAME.getCompressorCurrent();
 
 ## Single Solenoids
 
+![](img/SingleSolenoid.PNG)
+
 A single solenoid valve has one solenoid, and shifts when voltage is supplied to that solenoid.    
 When voltage is removed, it shifts back to a “home” position.
 ```

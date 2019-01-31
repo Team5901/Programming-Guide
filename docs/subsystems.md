@@ -14,16 +14,31 @@ Select  **`subsystem`**, and then name the subsystem appropriately.
 
 ![](img/CreateSubsystem.JPG)
 
-After you have finished, you have created a subsystem.  
-In the example below, I created a "Elevator" subsystem.
+The next step is to link this subsystem to the main robot file.   
+To do this, we need to create the subsystem object in the main robot file, `Robot.java`.
+
+Place this under `public class Robot extends TimedRobot`
+```
+public static SUBSYSTEMNAME subsystemname;
+```
+
+Then, add the following code under `public void robotInit()`
+
+```
+subsystemname = new SUBSYSTEMNAME();
+```
+
+Your end result should look similar to the following, but specific to the subsystem you want to create:
 
 ![](img/CreatedSubsystem.JPG)
+
 
 # Adding Motor Controllers/Sensors
 Now that we have a subsystem, we will need to define the motor controllers and sensors.  
 In Java, you must first create the object.  
 There are two things you need to know:
-* How many motor controllers do you need to add? (A 4 motor drivetrain requires 4 motor controllers)
+
+* How many motor controllers do you need to add for this subsystem alone? (Ex: A 4 motor drivetrain requires 4 motor controllers)
 * What type of motor controller is being used? (TalonSRX, VictorSPX, Sparks, etc.)
 
 
@@ -31,37 +46,24 @@ There are two things you need to know:
 
 ![](img/TalonSRX.JPG)
 
-###### Declaration - Place this under public class NAME extends Subsystem
-```
-private WPI_TalonSRX leftElevatorMotor;
-```
-
-
-###### Instantiate/Initializing (create an object)       
+###### Create a Talon - Place this under public class NAME extends Subsystem
 The number corresponds to the CANId of the motor controller.
-
 ```
-leftElevatorMotor = new WPI_TalonSRX(1);
+WPI_TalonSRX leftElevatorMotor = new  WPI_TalonSRX(1);
 ```
 
 ### If you are using VictorSPX  
 
 ![](img/VictorSPX.JPG)
 
-###### Declaration - Place this under public class NAME extends Subsystem
+###### Create a Victor - Place this under public class NAME extends Subsystem
 ```
-private WPI_VictorSPX leftElevatorMotor;
-```
-
-###### Instantiate/Initializing (create an object)    
-The number corresponds to the CANId of the motor controller.
-```
-leftElevatorMotor = new WPI_VictorSPX(1);
+WPI_VictorSPX leftElevatorMotor = new WPI_VictorSPX(1);
 ```
 
 ## Creating Methods
-A method is a function of the subsystem.
-For example, some functions of an elevator may be to lift to a certain height, lower, or to stop.
+A method is a function of the subsystem.   
+For example, some functions of an elevator may be to lift to a certain height, lower, or to stop.   
 To make an elevator stop, the example method is created to stop the elevator.
 
 ```
@@ -72,7 +74,7 @@ public void stopElevator(){
 
 This sets the elevator motor that we created earlier at 0 percent voltage.
 
-## Default Commands
+## Default Commands - Do I need one?
 
 Each subsystem can be assigned a default command. 
 If a subsystem is not running anything, the default command will always be run.
