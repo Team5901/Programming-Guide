@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Control Flow Statements (In Progress) - Team 5901 - Cougar Pack</title>
+  <title>Control Flow Statements - Team 5901 - Cougar Pack</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -17,7 +17,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Control Flow Statements (In Progress)";
+    var mkdocs_page_name = "Control Flow Statements";
     var mkdocs_page_input_path = "control.md";
     var mkdocs_page_url = null;
   </script>
@@ -60,20 +60,19 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="../basics/">Java Programming Basics</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
     <span class="caption-text">Basic Robot Code</span>
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../commands/">Programming Commmands</a>
+    <a class="" href="../basics/">Programming Basics</a>
                 </li>
                 <li class="">
                     
     <a class="" href="../subsystems/">Programming Subsystems</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../commands/">Programming Commmands</a>
                 </li>
                 <li class="">
                     
@@ -104,7 +103,7 @@
                 </li>
                 <li class=" current">
                     
-    <a class="current" href="./">Control Flow Statements (In Progress)</a>
+    <a class="current" href="./">Control Flow Statements</a>
     <ul class="subnav">
             
     <li class="toctree-l3"><a href="#overview">Overview</a></li>
@@ -165,7 +164,7 @@
         
       
     
-    <li>Control Flow Statements (In Progress)</li>
+    <li>Control Flow Statements</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -197,8 +196,8 @@ For FRC, you will typically only need if-then-else statements.</p>
 <td align="left">AND</td>
 </tr>
 <tr>
-<td align="left"></td>
-<td align="left"></td>
+<td align="left">||</td>
+<td align="left">OR (Shift + \)</td>
 </tr>
 <tr>
 <td align="left">==</td>
@@ -216,14 +215,12 @@ For FRC, you will typically only need if-then-else statements.</p>
 </table>
 <h6 id="if-then-else">If-Then-Else</h6>
 <pre><code>if (CONDITION1) {   
-    CODE_BLOCK_1     
+    CODE_BLOCK_1     // This code runs if CONDITION1 is TRUE
 } else {
-    CODE_BLOCK_2
+    CODE_BLOCK_2    // This code runs if CONDITION1 is FALSE
 }
 </code></pre>
 
-<p>If CONDITION1 is <code>true</code>, then the code between <code>{</code> and <code>}</code> is run (<code>CODE_BLOCK_1</code>). <br />
-If <code>false</code>, the code between <code>{</code> and <code>}</code> after the else is run (<code>CODE_BLOCK_2</code>).</p>
 <h6 id="example">Example</h6>
 <pre><code>    if (testscore &gt;= 90) {
         grade = 'A';
