@@ -32,9 +32,9 @@ COMPRESSORNAME.setClosedLoopControl(false);
 
 ## Reading compressor status
 ```
-boolean enabled = COMPRESSORNAME.enabled
-boolean pressureSwitch = COMPRESSORNAME.getPressureSwitchValue();
-double current = COMPRESSORNAME.getCompressorCurrent();
+boolean enabled = COMPRESSORNAME.enabled			//Checks if compressor is on
+boolean pressureSwitch = COMPRESSORNAME.getPressureSwitchValue();	//Check pressure switch value
+double current = COMPRESSORNAME.getCompressorCurrent();				//Check current of compressor
 ```
 
 ## Single Solenoids
