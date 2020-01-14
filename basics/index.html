@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Programming Basics - Team 5901 - Cougar Pack</title>
+  <title>Code Structure - Team 5901 - Cougar Pack</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -17,7 +17,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Programming Basics";
+    var mkdocs_page_name = "Code Structure";
     var mkdocs_page_input_path = "basics.md";
     var mkdocs_page_url = null;
   </script>
@@ -60,20 +60,31 @@
           
             <li class="toctree-l1">
 		
+    <a class="" href="../java/">FRC Java Basics</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
     <span class="caption-text">Basic Robot Code</span>
     <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../conventions/">Programming Conventions</a>
+                </li>
                 <li class=" current">
                     
-    <a class="current" href="./">Programming Basics</a>
+    <a class="current" href="./">Code Structure</a>
     <ul class="subnav">
             
     <li class="toctree-l3"><a href="#overview">Overview</a></li>
     
         <ul>
         
-            <li><a class="toctree-l4" href="#key-project-files">Key Project Files</a></li>
+            <li><a class="toctree-l4" href="#code-structure">Code Structure</a></li>
         
-            <li><a class="toctree-l4" href="#programming-guidlines">Programming Guidlines</a></li>
+            <li><a class="toctree-l4" href="#program-flow">Program Flow</a></li>
+        
+            <li><a class="toctree-l4" href="#example-program-flow">Example Program flow</a></li>
         
         </ul>
     
@@ -99,6 +110,10 @@
 		
     <span class="caption-text">Specialized Robot Code</span>
     <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../objects/">Creating Motor Controller Objects & Methods</a>
+                </li>
                 <li class="">
                     
     <a class="" href="../sensors/">Programming Sensors (In Progress)</a>
@@ -162,7 +177,7 @@
         
       
     
-    <li>Programming Basics</li>
+    <li>Code Structure</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -173,45 +188,38 @@
             <div class="section">
               
                 <h1 id="overview">Overview</h1>
-<p>For the FIRST Robotics competition, the team will use the programming language <code>Java</code>. <br />
-There are several rules we keep to try to keep our code clean and working.</p>
-<h2 id="key-project-files">Key Project Files</h2>
+<p>Our team uses a CommandBase Code structure.   <br />
+Subsystems create objects required to control the robot.    <br />
+Inside the subsystems, methods execute specific tasks.</p>
+<p>Commands are made to then run the method. </p>
+<p><strong>Understanding the code structure is the key to success</strong></p>
+<h2 id="code-structure">Code Structure</h2>
 <p><img alt="" src="../img/CodeStructure.JPG" /></p>
 <ul>
-<li><code>Robot.java</code> - Main robot class run when robot boots up</li>
-<li><code>OI.java</code> - Operator Interface; Assigns <code>commands</code> to controller <code>buttons</code></li>
-<li><code>Command files</code> - Requests action from <code>subsystem files</code></li>
-<li><code>Subsystem files</code> - Contain all possible actions of the <code>subsystem</code></li>
+<li><strong>General Files</strong><ul>
+<li><code>Constants.java</code> - Contains specific robot values (example: wheel diameters, calibration values, etcc)</li>
+<li><code>Main.java</code> - All java programs start from main. This main file starts Robot.java</li>
+<li><code>Robot.java</code></li>
+<li><code>RobotContainer.java</code> <ul>
+<li>Creates robots subsystems</li>
+<li>Assign commands to controller buttons</li>
 </ul>
+</li>
+</ul>
+</li>
+<li><strong>Command files</strong> - Requests action from <code>subsystem files</code></li>
+<li><strong>Subsystem files</strong> - Contain all possible actions of the <code>subsystem</code></li>
+</ul>
+<h2 id="program-flow">Program Flow</h2>
 <p><img alt="" src="../img/ProgramFlow.JPG" /></p>
-<h2 id="programming-guidlines">Programming Guidlines</h2>
-<p><img alt="" src="../img/Comment.JPG" /></p>
-<ol>
-<li>
-<p><strong>Comment your code</strong><br />
-Anything after <strong><code>//</code></strong> or surrounded by <code>/*</code> and <code>*/</code>is ignored by the program and will turn green. Use this to explain sections of code.</p>
-</li>
-<li>
-<p><strong>Name objects appropriately in CamelCase</strong>
-All objects should be named CamelCase, where the first letter of each word is capitalized.
-The exception to this rule is methods, which the first word is lowercase: raiseElevatorComand</p>
-</li>
-<li>
-<p><strong>No spaces in names</strong><br />
- Java doesnt like spaces.</p>
-</li>
-<li>
-<p><strong>All statements must end with</strong> <strong><code>;</code></strong></p>
-</li>
-<li>
-<p><strong>Blocks of code are contained within brackets</strong> <strong><code>{ }</code></strong>.  <br />
-You can have blocks of code within blocks of code!  <br />
-In the below example, the colored circles mark the beginning <code>{</code> and ending <code>}</code> of each block of code. <br />
-Note that the yellow and green blocks of code are within the red block of code, meaning that they may be run if the red block of code is run! 
-The blue block of code is completely seperate.   </p>
-</li>
-</ol>
-<p><img alt="" src="../img/brackets.JPG" /></p>
+<h2 id="example-program-flow">Example Program flow</h2>
+<p><img alt="" src="../img/CodeStructureExample1.JPG" /></p>
+<p>The command DropBall is assigned to controller button A on controller 1.      <br />
+When pressed, it will run the command DropBall located in Dropball.java.</p>
+<p><img alt="" src="../img/CodeStructureExample2.JPG" /></p>
+<p>The command DropBall, represented by <code>DropBall.java</code> calls a method from subsystem GripperSubsystem, which was initalized and named <code>m_GripperSubsystem</code> in the <code>RobotContainer.java</code></p>
+<p><img alt="" src="../img/CodeStructureExample3.JPG" /></p>
+<p>The method GripperClose() in the subsystem <code>GripperSubsystem</code> contains the code that controls the solenoid, causing it to actuate.</p>
               
             </div>
           </div>
@@ -222,7 +230,7 @@ The blue block of code is completely seperate.   </p>
         <a href="../subsystems/" class="btn btn-neutral float-right" title="Programming Subsystems">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../design/" class="btn btn-neutral" title="FRC Programming Outline"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../conventions/" class="btn btn-neutral" title="Programming Conventions"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -248,7 +256,7 @@ The blue block of code is completely seperate.   </p>
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../design/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../conventions/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
         <span style="margin-left: 15px"><a href="../subsystems/" style="color: #fcfcfc">Next &raquo;</a></span>

@@ -60,11 +60,20 @@
           
             <li class="toctree-l1">
 		
+    <a class="" href="../java/">FRC Java Basics</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
     <span class="caption-text">Basic Robot Code</span>
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../basics/">Programming Basics</a>
+    <a class="" href="../conventions/">Programming Conventions</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../basics/">Code Structure</a>
                 </li>
                 <li class="">
                     
@@ -85,6 +94,10 @@
 		
     <span class="caption-text">Specialized Robot Code</span>
     <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../objects/">Creating Motor Controller Objects & Methods</a>
+                </li>
                 <li class="">
                     
     <a class="" href="../sensors/">Programming Sensors (In Progress)</a>
@@ -199,9 +212,9 @@ The number corresponds with the PCM Node ID.</p>
 </code></pre>
 
 <h2 id="reading-compressor-status">Reading compressor status</h2>
-<pre><code>boolean enabled = COMPRESSORNAME.enabled
-boolean pressureSwitch = COMPRESSORNAME.getPressureSwitchValue();
-double current = COMPRESSORNAME.getCompressorCurrent();
+<pre><code>boolean enabled = COMPRESSORNAME.enabled            //Checks if compressor is on
+boolean pressureSwitch = COMPRESSORNAME.getPressureSwitchValue();   //Check pressure switch value
+double current = COMPRESSORNAME.getCompressorCurrent();             //Check current of compressor
 </code></pre>
 
 <h2 id="single-solenoids">Single Solenoids</h2>

@@ -60,11 +60,20 @@
           
             <li class="toctree-l1">
 		
+    <a class="" href="../java/">FRC Java Basics</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
     <span class="caption-text">Basic Robot Code</span>
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../basics/">Programming Basics</a>
+    <a class="" href="../conventions/">Programming Conventions</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../basics/">Code Structure</a>
                 </li>
                 <li class=" current">
                     
@@ -77,20 +86,9 @@
         
             <li><a class="toctree-l4" href="#creating-subsystems">Creating Subsystems</a></li>
         
-        </ul>
-    
-
-    <li class="toctree-l3"><a href="#adding-motor-controllerssensors">Adding Motor Controllers/Sensors</a></li>
-    
-        <ul>
-        
-            <li><a class="toctree-l4" href="#if-you-are-using-talonsrx">If you are using TalonSRX</a></li>
-        
-            <li><a class="toctree-l4" href="#if-you-are-using-victorspx">If you are using VictorSPX</a></li>
-        
-            <li><a class="toctree-l4" href="#creating-methods">Creating Methods</a></li>
-        
             <li><a class="toctree-l4" href="#default-commands-do-i-need-one">Default Commands - Do I need one?</a></li>
+        
+            <li><a class="toctree-l4" href="#creating-actuatorsensor-objects">Creating Actuator/Sensor Objects</a></li>
         
         </ul>
     
@@ -112,6 +110,10 @@
 		
     <span class="caption-text">Specialized Robot Code</span>
     <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../objects/">Creating Motor Controller Objects & Methods</a>
+                </li>
                 <li class="">
                     
     <a class="" href="../sensors/">Programming Sensors (In Progress)</a>
@@ -188,64 +190,39 @@
                 <h1 id="overview">Overview</h1>
 <p>Subsystems represent a major component of the robot, such as the drivetrain, an arm, or a shooter.
 The methods (or functions) within a subsystem control specific motors. </p>
-<p>In this section, you will create a subsytem and create motor controller/sensor objects.
+<p>In this section, you will create a subsytem and create actuator/sensor objects.
 You will then create the methods that control these components.</p>
 <p><img alt="" src="../img/FlowSubsystem.JPG" /></p>
 <h2 id="creating-subsystems">Creating Subsystems</h2>
-<p>To create a subsystem, right click subsystems in the explorer and select <strong><code>Create a new class/command</code></strong>.
-Select  <strong><code>subsystem</code></strong>, and then name the subsystem appropriately.</p>
+<p>To create a subsystem, right click subsystems in the explorer and select <strong><code>Create a new class/command</code></strong>.   <br />
+Select  <strong><code>subsystem</code></strong>, and then name the subsystem using CamelCase, and suffixing with "Subsystem"  </p>
+<p><strong>Example</strong>: ElevatorSubsystem</p>
+<p>After you are done, a .java file will be created under the subsystems folder corresponding with the name chosen.</p>
 <p><img alt="" src="../img/CreateSubsystem.JPG" /></p>
-<p>The next step is to link this subsystem to the main robot file. <br />
-To do this, we need to create the subsystem object in the main robot file, <code>Robot.java</code>.</p>
-<p>Place this under <code>public class Robot extends TimedRobot</code></p>
-<pre><code>public static SUBSYSTEMNAME subsystemname;
+<p>The next step is to make sure when the Robot is initalized, the subsystem object is created.  <br />
+To do this, modify the <code>RobotContainer.java</code> with the following code and place this under the class declaration.</p>
+<pre><code>private final &lt;Subsystem_Name&gt; m_&lt;Subsystem_Name&gt; = new &lt;Subsystem_Name&gt;();
 </code></pre>
 
-<p>Then, add the following code under <code>public void robotInit()</code></p>
-<pre><code>subsystemname = new SUBSYSTEMNAME();
-</code></pre>
-
-<p>Your end result should look similar to the following, but specific to the subsystem you want to create:</p>
-<p><img alt="" src="../img/CreatedSubsystem.JPG" /></p>
-<h1 id="adding-motor-controllerssensors">Adding Motor Controllers/Sensors</h1>
-<p>Now that we have a subsystem, we will need to define the motor controllers and sensors.<br />
-In Java, you must first create the object.<br />
-There are two things you need to know:</p>
-<ul>
-<li>How many motor controllers do you need to add for this subsystem alone? (Ex: A 4 motor drivetrain requires 4 motor controllers)</li>
-<li>What type of motor controller is being used? (TalonSRX, VictorSPX, Sparks, etc.)</li>
-</ul>
-<h3 id="if-you-are-using-talonsrx">If you are using TalonSRX</h3>
-<p><img alt="" src="../img/TalonSRX.JPG" /></p>
-<h6 id="create-a-talon-place-this-under-public-class-name-extends-subsystem">Create a Talon - Place this under public class NAME extends Subsystem</h6>
-<p>The number corresponds to the CANId of the motor controller.</p>
-<pre><code>WPI_TalonSRX leftElevatorMotor = new  WPI_TalonSRX(1);
-</code></pre>
-
-<h3 id="if-you-are-using-victorspx">If you are using VictorSPX</h3>
-<p><img alt="" src="../img/VictorSPX.JPG" /></p>
-<h6 id="create-a-victor-place-this-under-public-class-name-extends-subsystem">Create a Victor - Place this under public class NAME extends Subsystem</h6>
-<pre><code>WPI_VictorSPX leftElevatorMotor = new WPI_VictorSPX(1);
-</code></pre>
-
-<h2 id="creating-methods">Creating Methods</h2>
-<p>A method is a function of the subsystem. <br />
-For example, some functions of an elevator may be to lift to a certain height, lower, or to stop. <br />
-To make an elevator stop, the example method is created to stop the elevator.</p>
-<pre><code>public void stopElevator(){
-    leftElevatorMotor.set(0.0);
-}
-</code></pre>
-
-<p>This sets the elevator motor that we created earlier at 0 percent voltage.</p>
+<p>Your end result should look similar to the following, but specific to your robot:</p>
+<p><img alt="" src="../img/CreateSubsystemObject.JPG" /></p>
 <h2 id="default-commands-do-i-need-one">Default Commands - Do I need one?</h2>
-<p>Each subsystem can be assigned a default command. 
+<p>Each subsystem can be assigned a default command.    <br />
 If a subsystem is not running anything, the default command will always be run.</p>
 <p><strong>When would you want this?</strong>
-When you want something to always be running by default. For example, our drivetrain command always runs a <code>DefaultDrive</code> command that constantly checks to see if the joystick value has changed.</p>
-<p>If you need to have a default command, add the following code to <code>public void initDefaultCommand()</code></p>
-<pre><code>setDefaultCommand(new COMMANDNAME));
+When you want something to always be running by default.   <br />
+For example, our drivetrain command always runs a <code>DefaultDrive</code> command that constantly checks to see if the joystick value has changed.</p>
+<p>If you need to have a default command, add the following code in the constructor of RobotContainer:</p>
+<pre><code>&lt;subsystemname&gt;.setDefaultCommand(new command));
 </code></pre>
+
+<p>Example:</p>
+<p><img alt="" src="../img/defaultcommand.JPG" /></p>
+<h2 id="creating-actuatorsensor-objects">Creating Actuator/Sensor Objects</h2>
+<p>Actuators and sensors belong to the subsystem, and varies depending on design.   <br />
+In our example, an elevator may be controlled by a <code>motor controller</code> and an <code>encoder</code>.
+Every object must be created in the subsystem before it can be used.</p>
+<p>See <a href="../objects/">Specialized Robot Code</a> for additional details.</p>
               
             </div>
           </div>
@@ -256,7 +233,7 @@ When you want something to always be running by default. For example, our drivet
         <a href="../commands/" class="btn btn-neutral float-right" title="Programming Commmands">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../basics/" class="btn btn-neutral" title="Programming Basics"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../basics/" class="btn btn-neutral" title="Code Structure"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   

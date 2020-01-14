@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Autonomous (In Progress) - Team 5901 - Cougar Pack</title>
+  <title>Creating Motor Controller Objects & Methods - Team 5901 - Cougar Pack</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -17,8 +17,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Autonomous (In Progress)";
-    var mkdocs_page_input_path = "autonomous.md";
+    var mkdocs_page_name = "Creating Motor Controller Objects & Methods";
+    var mkdocs_page_input_path = "objects.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -94,9 +94,31 @@
 		
     <span class="caption-text">Specialized Robot Code</span>
     <ul class="subnav">
-                <li class="">
+                <li class=" current">
                     
-    <a class="" href="../objects/">Creating Motor Controller Objects & Methods</a>
+    <a class="current" href="./">Creating Motor Controller Objects & Methods</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#overview">Overview</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#creating-a-talonsrx-object">Creating a TalonSRX Object</a></li>
+        
+            <li><a class="toctree-l4" href="#creating-a-victorsp-object">Creating a VictorSP Object</a></li>
+        
+            <li><a class="toctree-l4" href="#creating-motor-controller-methods">Creating Motor Controller Methods</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l3"><a href="#motor-controller-functions">Motor Controller Functions</a></li>
+    
+
+    <li class="toctree-l3"><a href="#example">Example</a></li>
+    
+
+    </ul>
                 </li>
                 <li class="">
                     
@@ -118,24 +140,9 @@
                     
     <a class="" href="../control/">Control Flow Statements</a>
                 </li>
-                <li class=" current">
+                <li class="">
                     
-    <a class="current" href="./">Autonomous (In Progress)</a>
-    <ul class="subnav">
-            
-    <li class="toctree-l3"><a href="#overview">Overview</a></li>
-    
-
-    <li class="toctree-l3"><a href="#declaration">Declaration</a></li>
-    
-
-    <li class="toctree-l3"><a href="#adding-autonomous-options">Adding Autonomous Options</a></li>
-    
-
-    <li class="toctree-l3"><a href="#run-autonomous-command">Run Autonomous Command</a></li>
-    
-
-    </ul>
+    <a class="" href="../autonomous/">Autonomous (In Progress)</a>
                 </li>
     </ul>
 	    </li>
@@ -176,7 +183,7 @@
         
       
     
-    <li>Autonomous (In Progress)</li>
+    <li>Creating Motor Controller Objects & Methods</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -187,32 +194,83 @@
             <div class="section">
               
                 <h1 id="overview">Overview</h1>
-<p>The first stage of the game usually involves an autonomus phase where Robots must act on their own without human intervention.
-The first exception to this rule is in 2019 - Deep Space.</p>
-<h1 id="_1"></h1>
-<h6 id="declaration">Declaration</h6>
-<pre><code>    Command autonomousCommand;
-    SendableChooser&lt;Command&gt; chooser = new SendableChooser&lt;&gt;();
+<p>Motor controllers control motors by sending controlled levels of voltage to a motor. <br />
+In this section, you will learn to and create motor controller objects in Java.   <br />
+You will then create the methods that control these components.</p>
+<h2 id="creating-a-talonsrx-object">Creating a TalonSRX Object</h2>
+<p><img alt="" src="../img/TalonSRX.JPG" /></p>
+<p>Place this in the class constructor under <code>public class &lt;Subsystem_name&gt; extends SubsystemBase</code></p>
+<pre><code>private final WPI_TalonSRX &lt;motorcontrollername&gt; = new  WPI_TalonSRX(X);
 </code></pre>
 
-<h6 id="adding-autonomous-options">Adding Autonomous Options</h6>
-<p>You will need to add your autonomous commands to the SmartDashboard in order to choose between them. <br />
-Place this code in the method that runs when the robot is first initialized within <code>Robot.Java</code>.</p>
-<pre><code>    chooser.addDefault(&quot;Autonomous Command&quot;, new AutonomousCommand());
-    positionChooser.addDefault(&quot;Left&quot;, &quot;left&quot;);
-    positionChooser.addObject(&quot;Middle&quot;, &quot;middle&quot;);
-    positionChooser.addObject(&quot;Right&quot;, &quot;right&quot;);
-    positionChooser.addObject(&quot;Cross Line&quot;, &quot;cross&quot;);
-    SmartDashboard.putData(&quot;Auto Mode&quot;, positionChooser);
+<p>The number <strong>X</strong> corresponds to the CANId of the motor controller.
+Each motor controller has a unique CANId to make sure the correct one is called.</p>
+<h2 id="creating-a-victorsp-object">Creating a VictorSP Object</h2>
+<p><img alt="" src="../img/VictorSPX.JPG" /></p>
+<p>Place this under <code>public class &lt;Subsystem_name&gt; extends SubsystemBase</code></p>
+<pre><code>private final WPI_VictorSPX &lt;motorcontrollername&gt; = new WPI_VictorSPX(X);
 </code></pre>
 
-<h6 id="run-autonomous-command">Run Autonomous Command</h6>
-<p>Place this code where the autonomous phase is initalized within <code>Robot.Java</code>.</p>
-<pre><code>    public void autonomousInit() {
-    autonomousCommand = new AUTONOMOUSCOMMANDNAME();
+<p>The number <strong>X</strong> corresponds to the CANId of the motor controller.</p>
+<h2 id="creating-motor-controller-methods">Creating Motor Controller Methods</h2>
+<p>A method is a function of the subsystem.   <br />
+Other parts of code can call the method, which will automatically run the block of code between the {}.
+This allows for code to be reused throughout the program.</p>
+<p>To create a method, place the following code before the final bracket.   <br />
+Be sure to name the method starting with a lowercase letter, then camelCase.</p>
+<pre><code>public void &lt;method_name&gt;(){
 
-    if (autonomousCommand != null) autonomousCommand.start();
+}
 </code></pre>
+
+<p>If you would like to pass a parameter into the method, use the following syntax.  <br />
+Multiple parameters can be passed if needed. </p>
+<pre><code>public void &lt;method_name&gt;(&lt;datatype&gt; &lt;parameter_name&gt;){
+
+}
+</code></pre>
+
+<p>Methods should be placed at the bottom of the subsystem, but still contained within the class like so:</p>
+<p><img alt="" src="../img/MethodPlacementExample.JPG" /></p>
+<h1 id="motor-controller-functions">Motor Controller Functions</h1>
+<p>Each motor controler comes with a pre-built library of common functions.
+The most common are below:</p>
+<table>
+<thead>
+<tr>
+<th>Methods</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>set</td>
+<td>if control mode = PercentOutpuit, value of [-1,1]</td>
+<td>LeftElevatorMotor(1.0);</td>
+</tr>
+<tr>
+<td>setInverted</td>
+<td>switches rotation of motor (by default, positive values are counterclockwise, negative values are clockwise)</td>
+<td>LeftElevatorMotor.setInverted(true) Cell</td>
+</tr>
+<tr>
+<td>stopMotor</td>
+<td>stops motor</td>
+<td>LeftElevatorMotor.stopmotor();</td>
+</tr>
+</tbody>
+</table>
+<p>For a full description, see the following links   <br />
+<a href="https://www.ctr-electronics.com/downloads/api/archive_4.4.X/hero_cs/class_c_t_r_e_1_1_talon_srx.html">TalonSRX API</a>   <br />
+<a href="https://first.wpi.edu/FRC/roborio/beta/docs/java/edu/wpi/first/wpilibj/VictorSP.html">VictorSP API</a>     </p>
+<h1 id="example">Example</h1>
+<p>A function of an elevator may be to lift to a certain height, lower, or to stop.   <br />
+The motors controlling the elevator will push the elevator in a certain direction.</p>
+<p>To do the above, the following functions were created:</p>
+<p><img alt="" src="../img/MethodExample.JPG" /></p>
+<p>This sets the elevator motor that we created earlier at a certain value.
+For example, to stop the elevator, we could call setElevator(0.0) to stop the elevator motors.</p>
               
             </div>
           </div>
@@ -220,10 +278,10 @@ Place this code in the method that runs when the robot is first initialized with
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../update/" class="btn btn-neutral float-right" title="Updating Hardware">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../sensors/" class="btn btn-neutral float-right" title="Programming Sensors (In Progress)">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../control/" class="btn btn-neutral" title="Control Flow Statements"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../controllers/" class="btn btn-neutral" title="Programming the Controller"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -249,10 +307,10 @@ Place this code in the method that runs when the robot is first initialized with
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../control/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../controllers/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../update/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../sensors/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
