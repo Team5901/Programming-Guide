@@ -21,10 +21,13 @@ GYRONAME = new ADXRS450_Gyro();
 ```
 
 ###### Usage
-```
-GYRONAME.getAngle();	//Returns Gyro Angle relative to last reset heading
-GYRONAME.reset();		//Sets current heading to 0 degrees
-```
+
+Function | Description | Example usage
+---------|-------------|--------------
+getAngle()| | get angle from gyro | <GYRONAME>.getAngle();
+reset()| reset gyro heading to zero | <GYRONAME>.reset();	
+GYRONAME.getAngle();	
+
 
 ##Encoders
 

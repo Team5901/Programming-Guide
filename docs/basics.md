@@ -1,39 +1,46 @@
 # Overview
-For the FIRST Robotics competition, the team will use the programming language `Java`.   
-There are several rules we keep to try to keep our code clean and working.
+Our team uses a CommandBase Code structure.     
+Subsystems create objects required to control the robot.      
+Inside the subsystems, methods execute specific tasks.
 
-## Key Project Files
+Commands are made to then run the method. 
+
+**Understanding the code structure is the key to success**
+
+## Code Structure
 
 ![](img/CodeStructure.JPG)
 
-* `Robot.java` - Main robot class run when robot boots up
-* `OI.java` - Operator Interface; Assigns `commands` to controller `buttons`
-* `Command files` - Requests action from `subsystem files`
-* `Subsystem files` - Contain all possible actions of the `subsystem`
+* **General Files**
+	* `Constants.java` - Contains specific robot values (example: wheel diameters, calibration values, etcc)
+	* `Main.java` - All java programs start from main. This main file starts Robot.java
+	* `Robot.java`
+	* `RobotContainer.java` 
+		* 	Creates robots subsystems
+		*	Assign commands to controller buttons
+* **Command files** - Requests action from `subsystem files`
+* **Subsystem files** - Contain all possible actions of the `subsystem`
 
+## Program Flow
 
 ![](img/ProgramFlow.JPG)
-## Programming Guidlines
-
-![](img/Comment.JPG)
-
-1. __Comment your code__  
-Anything after **`//`** or surrounded by `/*` and `*/`is ignored by the program and will turn green. Use this to explain sections of code.
-
-2. **Name objects appropriately in CamelCase**
-All objects should be named CamelCase, where the first letter of each word is capitalized.
-The exception to this rule is methods, which the first word is lowercase: raiseElevatorComand
-
-3. __No spaces in names__  
- Java doesnt like spaces.
 
 
-4. **All statements must end with** **`;`**
+## Example Program flow
 
-5. **Blocks of code are contained within brackets** **`{ }`**.    
-You can have blocks of code within blocks of code!    
-In the below example, the colored circles mark the beginning `{` and ending `}` of each block of code.   
-Note that the yellow and green blocks of code are within the red block of code, meaning that they may be run if the red block of code is run! 
-The blue block of code is completely seperate.   
+![](img/CodeStructureExample1.JPG)
 
-![](img/brackets.JPG)
+The command DropBall is assigned to controller button A on controller 1.        
+When pressed, it will run the command DropBall located in Dropball.java.
+
+![](img/CodeStructureExample2.JPG)
+
+The command DropBall, represented by `DropBall.java` calls a method from subsystem GripperSubsystem, which was initalized and named `m_GripperSubsystem` in the `RobotContainer.java`
+
+![](img/CodeStructureExample3.JPG)
+
+The method GripperClose() in the subsystem `GripperSubsystem` contains the code that controls the solenoid, causing it to actuate.
+
+
+
+

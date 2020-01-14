@@ -13,11 +13,11 @@ This page summarizes the overall steps required to program a robot.
 	* What commands should be mapped to which buttons?
 
 ## Programming Phase
-* Subsystems
-	* Create objects (sensors.actuators, etc.) in Java
-	* Program methods to control
-* Commands need to be created, calling from subsystem methods
-* Autonomous routines need to be created (optional for 2019)
+* Create Subsystem Classes
+* Create objects 
+* Create methods to execute tasks control
+* Create commands that utilize methods 
+* Autonomous routines need to be created
 
 
 ## Testing 
@@ -28,25 +28,42 @@ This page summarizes the overall steps required to program a robot.
 ## Example
 
 
-Lets say we want to design an arm that will lift a game object.   
-The arm will squeeze ball with pistons, and then lift the ball.   
-From a programmer standpoint, here is an example of our thought process.   
+Lets say the team decides to build a robot that uses a gripper to squeeze a ball, then uses an elevator to raise the ball.
 
 ###### Design Phase
-* Our arm will need to lift a game piece to a certain height 
-	* This means you need at least one `motor` to lift your arm
-	* This means you may need a `sensor`, like an `encoder` so you know the height of your arm
-* Our arm will need to squeeze the ball with `pistons`
-	* We will need a `solenoid` to activate our pistons
-	* We will need an `air compressor` to generate air
+![](img/DesignPhase.JPG)
+
 
 ###### Programming Phase
 
-* Subsystems
-	* Need to create `motor controller`, `encoder` , `solenoid`, and `compressor` in Java
-	* Method/Command examples
-		* Lift Arm 
-		* Lower Arm
-		* Stop Arm
+Need to create the following subsystems with the following objects
+
+* **Subsystems**
+	* Drivetrain
+		* `motor controller`
+		* `encoder`
+		* `gyro`
+	* Elevator
+		* `motor controller`
+		* `encoder`
+	* Gripper
+		* `solenoid`
+		* `compressor`
+
+After, the following commands need to be created for the corresponding subsystem
+
+* **Commands**
+	* Drivetrain
+		* Autonomous Drive Straight
+	* Elevator
+		* Raise Elevator
+		* Lower Elevator
+		* Stop Elevator		
+	* Gripper
 		* Squeeze Ball
-		* Release Ball
+		* Drop Ball
+		
+Now that the robot structure is outlined, we can begin to code.   
+Refer to the [Basic Robot Programming page](basics.md).
+
+

@@ -2,12 +2,16 @@ site_name: Team 5901 - Cougar Pack
 nav:
     - Home: index.md
     - FRC Programming Outline: design.md
+    - FRC Java Basics: java.md
+        
     - Basic Robot Code:
-        - Programming Basics: basics.md
+        - Programming Conventions: conventions.md
+        - Code Structure: basics.md
         - Programming Subsystems: subsystems.md
         - Programming Commmands: commands.md
         - Programming the Controller: controllers.md
     - Specialized Robot Code:      
+        - Creating Motor Controller Objects & Methods: objects.md
         - Programming Sensors (In Progress): sensors.md    
         - Camera: camera.md    
         - Vision (In Progress): vision.md  
@@ -17,4 +21,4 @@ nav:
     - Updating Hardware: update.md    
     - About: about.md
 
-theme: readthedocs
+theme: 'readthedocs'
