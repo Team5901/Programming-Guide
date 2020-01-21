@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Programming Commmands - Team 5901 - Cougar Pack</title>
+  <title>Programming Subsystems - Team 5901 - Cougar Pack</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -17,8 +17,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Programming Commmands";
-    var mkdocs_page_input_path = "commands.md";
+    var mkdocs_page_name = "Programming Subsystems";
+    var mkdocs_page_input_path = "Basic - Subsystems.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -69,32 +69,26 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../conventions/">Programming Conventions</a>
+    <a class="" href="../Basic - Conventions/">Programming Conventions</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../basics/">Code Structure</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../subsystems/">Programming Subsystems</a>
+    <a class="" href="../Basic - Code Structure/">Code Structure</a>
                 </li>
                 <li class=" current">
                     
-    <a class="current" href="./">Programming Commmands</a>
+    <a class="current" href="./">Programming Subsystems</a>
     <ul class="subnav">
             
     <li class="toctree-l3"><a href="#overview">Overview</a></li>
     
         <ul>
         
-            <li><a class="toctree-l4" href="#creating-commands">Creating Commands</a></li>
+            <li><a class="toctree-l4" href="#creating-subsystems">Creating Subsystems</a></li>
         
-            <li><a class="toctree-l4" href="#requiring-subsystems">Requiring Subsystems</a></li>
+            <li><a class="toctree-l4" href="#default-commands-do-i-need-one">Default Commands - Do I need one?</a></li>
         
-            <li><a class="toctree-l4" href="#calling-subsystem-methods">Calling Subsystem Methods</a></li>
-        
-            <li><a class="toctree-l4" href="#code-placement">Code Placement</a></li>
+            <li><a class="toctree-l4" href="#creating-actuatorsensor-objects">Creating Actuator/Sensor Objects</a></li>
         
         </ul>
     
@@ -103,7 +97,11 @@
                 </li>
                 <li class="">
                     
-    <a class="" href="../controllers/">Programming the Controller</a>
+    <a class="" href="../Basic - Commands/">Programming Commmands</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Basic - Controllers/">Programming the Controller</a>
                 </li>
     </ul>
 	    </li>
@@ -114,27 +112,23 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../objects/">Creating Motor Controller Objects & Methods</a>
+    <a class="" href="../Special - Motors/">Motor Controllers</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../sensors/">Programming Sensors (In Progress)</a>
+    <a class="" href="../Special - Sensors/">Sensors</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../camera/">Camera</a>
+    <a class="" href="../Special - Camera/">Camera</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../vision/">Vision (In Progress)</a>
+    <a class="" href="../Special - Vision/">Vision</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../pneumatics/">Pneumatics</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../control/">Control Flow Statements</a>
+    <a class="" href="../Special - Pneumatics/">Pneumatics</a>
                 </li>
                 <li class="">
                     
@@ -146,6 +140,11 @@
             <li class="toctree-l1">
 		
     <a class="" href="../update/">Updating Hardware</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../ToDo/">To Dos</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -179,7 +178,7 @@
         
       
     
-    <li>Programming Commmands</li>
+    <li>Programming Subsystems</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -190,49 +189,41 @@
             <div class="section">
               
                 <h1 id="overview">Overview</h1>
-<p>Commands are used to execute robot functions. <br />
-Commands call methods of subsystems to execute a task.</p>
-<p><img alt="" src="../img/FlowCommand.JPG" /></p>
-<h2 id="creating-commands">Creating Commands</h2>
-<p>To create a command, right click subsystems in the explorer and select <strong><code>Create a new class/command</code></strong>. <br />
-Select  <strong><code>command</code></strong>, and then name the command appropriately using CamelCase. 
-For example, the command to stop an elevator should be named <strong><code>StopElevator</code></strong>.</p>
-<p><img alt="" src="../img/CreateCommand.JPG" /></p>
-<p>When you are done, a new .java file will be created under command.</p>
-<h2 id="requiring-subsystems">Requiring Subsystems</h2>
-<p>The next thing to think about is if your command <strong><code>requires</code></strong> a subsystem.<br />
-A command the <code>requires</code> a subsystem will automatically interrupt any other command that subsystem is running if needed.</p>
-<p>Example: What happens if <strong><code>raiseElevatorCommand</code></strong> is run the same time as <strong><code>lowerElevatorCommand</code></strong>?   </p>
-<p>To ensure both never run at the same time, we should require the subsystem for both commands.</p>
-<p>If this command requires  control of the subsystem, add the following code under the constructor, <code>public COMMANDNAME()</code></p>
-<p>Under the class:</p>
-<pre><code>final &lt;subsystem&gt;&lt;subsystem name&gt;;
+<p>Subsystems represent a major component of the robot, such as the drivetrain, an arm, or a shooter.
+The methods (or functions) within a subsystem control specific motors. </p>
+<p>In this section, you will create a subsytem and create actuator/sensor objects.
+You will then create the methods that control these components.</p>
+<p><img alt="" src="../img/FlowSubsystem.JPG" /></p>
+<h2 id="creating-subsystems">Creating Subsystems</h2>
+<p>To create a subsystem, right click subsystems in the explorer and select <strong><code>Create a new class/command</code></strong>.   <br />
+Select  <strong><code>subsystem</code></strong>, and then name the subsystem using CamelCase, and suffixing with "Subsystem"  </p>
+<p><strong>Example</strong>: ElevatorSubsystem</p>
+<p>After you are done, a .java file will be created under the subsystems folder corresponding with the name chosen.</p>
+<p><img alt="" src="../img/CreateSubsystem.JPG" /></p>
+<p>The next step is to make sure when the Robot is initalized, the subsystem object is created.  <br />
+To do this, modify the <code>RobotContainer.java</code> with the following code and place this under the class declaration.</p>
+<pre><code>private final &lt;Subsystem_Name&gt; m_&lt;Subsystem_Name&gt; = new &lt;Subsystem_Name&gt;();
 </code></pre>
 
-<p>Under the constructor:</p>
-<pre><code>&lt;subsystem name&gt; = subsystem;
-addRequirements(subsystem);
+<p>Your end result should look similar to the following, but specific to your robot:</p>
+<p><img alt="" src="../img/CreateSubsystemObject.JPG" /></p>
+<h2 id="default-commands-do-i-need-one">Default Commands - Do I need one?</h2>
+<p>Each subsystem can be assigned a default command.    <br />
+If a subsystem is not running anything, the default command will always be run.</p>
+<p><strong>When would you want this?</strong>
+When you want something to always be running by default.   <br />
+For example, our drivetrain command always runs a <code>DefaultDrive</code> command that constantly checks to see if the joystick value has changed.</p>
+<p>If you need to have a default command, add the following code in the constructor of RobotContainer:</p>
+<pre><code>&lt;subsystemname&gt;.setDefaultCommand(new command));
 </code></pre>
 
-<p>Example: </p>
-<p><img alt="" src="../img/Commands - Requiring Subsystems.JPG" /></p>
-<h2 id="calling-subsystem-methods">Calling Subsystem Methods</h2>
-<p>The command requests the subsystem to perform a function, such as turn on a motor. <br />
-For example, the following code will call on subsystem <strong><code>Elevator</code></strong>, and it's method <strong><code>stopElevator</code></strong> using the following code:</p>
-<pre><code>&lt;subsystem name&gt;.&lt;method name&gt;();
-</code></pre>
-
-<p><img alt="" src="../img/Commands - Methods.JPG" /></p>
-<p>The next question is, where should this code be placed? See the next section for details.</p>
-<h2 id="code-placement">Code Placement</h2>
-<ul>
-<li><strong>protected void initialize()</strong> - Code placed here will one run <strong>once</strong> when the command is run</li>
-<li><strong>protected void execute()</strong> - Code placed here will run <strong>continously</strong> as long as the command is running</li>
-<li><strong>protected void isFinished()</strong> - Code placed here determines <strong>when</strong> the command stops</li>
-<li><strong>protected void end()</strong> - Code placed here runs once the command is <strong>over</strong></li>
-<li><strong>protected void interrupted()</strong> - Code placed here runs if the commands is <strong>interrupted</strong> by another command that requires the subsystem. Most of the time, you should run the <code>end()</code> command in this method.</li>
-</ul>
-<p><img alt="" src="../img/CreatedCommand.JPG" /></p>
+<p>Example:</p>
+<p><img alt="" src="../img/defaultcommand.JPG" /></p>
+<h2 id="creating-actuatorsensor-objects">Creating Actuator/Sensor Objects</h2>
+<p>Actuators and sensors belong to the subsystem, and varies depending on design.   <br />
+In our example, an elevator may be controlled by a <code>motor controller</code> and an <code>encoder</code>.
+Every object must be created in the subsystem before it can be used.</p>
+<p>See <strong>Specialized Robot Code</strong> section for additional details.</p>
               
             </div>
           </div>
@@ -240,10 +231,10 @@ For example, the following code will call on subsystem <strong><code>Elevator</c
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../controllers/" class="btn btn-neutral float-right" title="Programming the Controller">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../Basic - Commands/" class="btn btn-neutral float-right" title="Programming Commmands">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../subsystems/" class="btn btn-neutral" title="Programming Subsystems"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../Basic - Code Structure/" class="btn btn-neutral" title="Code Structure"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -269,10 +260,10 @@ For example, the following code will call on subsystem <strong><code>Elevator</c
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../subsystems/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../Basic - Code Structure/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../controllers/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../Basic - Commands/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

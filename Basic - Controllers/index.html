@@ -18,7 +18,7 @@
   <script>
     // Current page data
     var mkdocs_page_name = "Programming the Controller";
-    var mkdocs_page_input_path = "controllers.md";
+    var mkdocs_page_input_path = "Basic - Controllers.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -69,19 +69,19 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../conventions/">Programming Conventions</a>
+    <a class="" href="../Basic - Conventions/">Programming Conventions</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../basics/">Code Structure</a>
+    <a class="" href="../Basic - Code Structure/">Code Structure</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../subsystems/">Programming Subsystems</a>
+    <a class="" href="../Basic - Subsystems/">Programming Subsystems</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../commands/">Programming Commmands</a>
+    <a class="" href="../Basic - Commands/">Programming Commmands</a>
                 </li>
                 <li class=" current">
                     
@@ -112,27 +112,23 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../objects/">Creating Motor Controller Objects & Methods</a>
+    <a class="" href="../Special - Motors/">Motor Controllers</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../sensors/">Programming Sensors (In Progress)</a>
+    <a class="" href="../Special - Sensors/">Sensors</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../camera/">Camera</a>
+    <a class="" href="../Special - Camera/">Camera</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../vision/">Vision (In Progress)</a>
+    <a class="" href="../Special - Vision/">Vision</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../pneumatics/">Pneumatics</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../control/">Control Flow Statements</a>
+    <a class="" href="../Special - Pneumatics/">Pneumatics</a>
                 </li>
                 <li class="">
                     
@@ -144,6 +140,11 @@
             <li class="toctree-l1">
 		
     <a class="" href="../update/">Updating Hardware</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../ToDo/">To Dos</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -190,22 +191,85 @@
                 <h1 id="overview">Overview</h1>
 <p>Controllers are operated by human players in order to command the robot.
 In this section, you will create the controller and button objects in Java.
-If you have completed the <a href="../commands/">command section</a>, you can then assign commands to specific button.</p>
+If you have completed the <a href="../Basic - Commands/">command section</a>, you can then assign commands to specific button.</p>
 <p><img alt="" src="../img/FlowRobotContainer.JPG" /></p>
 <h2 id="1-creating-a-joystick-object">1. Creating a Joystick Object</h2>
-<p>The example below declares to the program that there is an object named CONTROLLERNAME that is a joystick.
-This should be placed under <strong><code>public class OI</code></strong>. 
-The port number tells the computer which USB slot this controller should be in.</p>
-<pre><code>XboxController Controller1 = new XboxController(0);
+<p>The example below declares to the program that there is an object named <controllername> that is a <code>XBoxController</code>.   <br />
+This should be placed under <strong><code>public class OI</code></strong>.      <br />
+The port number tells the computer which USB slot this controller should be in.     </p>
+<pre><code>XboxController &lt;controllername&gt; = new XboxController(0);
 </code></pre>
 
 <h2 id="2-creating-button-objects">2. Creating Button Objects</h2>
-<pre><code>new JoystickButton(&lt;controllername&gt;, Button.kA.value)
+<p>In the example above, we create a button on a xbox controller named <code>&lt;controllerName&gt;</code>.   <br />
+<strong>Note: Joysticks and the trigger are NOT considered buttons since their value can vary between 0 and 1</strong></p>
+<p>Syntax</p>
+<pre><code>new JoystickButton(&lt;controllername&gt;, &lt;buttontype&gt;)
 </code></pre>
 
-<p>In the example above, we create the A button on a xbox controller named <code>Controller1</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Button</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>kA</td>
+<td>A button</td>
+<td>new JoystickButton(Controller1,button.kA.value)</td>
+</tr>
+<tr>
+<td>kB</td>
+<td>B button</td>
+<td>new JoystickButton(Controller1,button.kB.value)</td>
+</tr>
+<tr>
+<td>kX</td>
+<td>X button</td>
+<td>new JoystickButton(Controller1,button.kX.value)</td>
+</tr>
+<tr>
+<td>kY</td>
+<td>Y button</td>
+<td>new JoystickButton(Controller1,button.kY.value)</td>
+</tr>
+<tr>
+<td>kBack</td>
+<td>Back button</td>
+<td>new JoystickButton(Controller1,button.kBack.value)</td>
+</tr>
+<tr>
+<td>kStart</td>
+<td>Start button</td>
+<td>new JoystickButton(Controller1,button.kStart.value)</td>
+</tr>
+<tr>
+<td>kBumperLeft</td>
+<td>Left Bumper</td>
+<td>new JoystickButton(Controller1,button.kBumperLeft.value)</td>
+</tr>
+<tr>
+<td>kBumperRight</td>
+<td>Right Bumper</td>
+<td>new JoystickButton(Controller1,button.kBumperRight.value)</td>
+</tr>
+<tr>
+<td>kStickLeft</td>
+<td>Left stick press</td>
+<td>new JoystickButton(Controller1,button.kStickLeft.value)</td>
+</tr>
+<tr>
+<td>kStickRight</td>
+<td>Right stick press</td>
+<td>new JoystickButton(Controller1,button.kStickRight.value)</td>
+</tr>
+</tbody>
+</table>
 <h2 id="3-assigning-commands-to-buttons">3. Assigning Commands to Buttons</h2>
-<p>NOTE: To complete this section, you must have completed the <a href="../commands/">command section</a> of the is guide.</p>
+<p>NOTE: To complete this section, you must have completed the <a href="../Basic - Commands/">command section</a> of the is guide.</p>
 <p>Depending on your design, you may want your buttons to behave differently.
 Here are 3 possible button types you can use, depending on your application.</p>
 <p>Add this immediately after you have created your button object.</p>
@@ -233,10 +297,10 @@ Here are 3 possible button types you can use, depending on your application.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../objects/" class="btn btn-neutral float-right" title="Creating Motor Controller Objects & Methods">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../Special - Motors/" class="btn btn-neutral float-right" title="Motor Controllers">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../commands/" class="btn btn-neutral" title="Programming Commmands"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../Basic - Commands/" class="btn btn-neutral" title="Programming Commmands"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -262,10 +326,10 @@ Here are 3 possible button types you can use, depending on your application.</p>
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../commands/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../Basic - Commands/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../objects/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../Special - Motors/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
