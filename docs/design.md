@@ -64,6 +64,6 @@ After, the following commands need to be created for the corresponding subsystem
 		* Drop Ball
 		
 Now that the robot structure is outlined, we can begin to code.   
-Refer to the [Basic Robot Programming page](basics.md).
+Refer to the **Basic Robot Programming page**
 
 

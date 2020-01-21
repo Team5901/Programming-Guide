@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Sensors - Team 5901 - Cougar Pack</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Sensors";
+    var mkdocs_page_input_path = "Special - Sensors.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Team 5901 - Cougar Pack</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../design/">FRC Programming Outline</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../java/">FRC Java Basics</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Basic Robot Code</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../Basic - Conventions/">Programming Conventions</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Basic - Code Structure/">Code Structure</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Basic - Subsystems/">Programming Subsystems</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Basic - Commands/">Programming Commmands</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Basic - Controllers/">Programming the Controller</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Specialized Robot Code</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../Special - Motors/">Motor Controllers</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Sensors</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#overview">Overview</a></li>
+    
+
+    <li class="toctree-l3"><a href="#gyros">Gyros</a></li>
+    
+
+    <li class="toctree-l3"><a href="#encoders">Encoders</a></li>
+    
+
+    <li class="toctree-l3"><a href="#limit-switch">Limit Switch</a></li>
+    
+
+    <li class="toctree-l3"><a href="#ultrasonics">Ultrasonics</a></li>
+    
+
+    <li class="toctree-l3"><a href="#color-sensor">Color Sensor</a></li>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Special - Camera/">Camera</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Special - Vision/">Vision</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Special - Pneumatics/">Pneumatics</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../autonomous/">Autonomous (In Progress)</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../update/">Updating Hardware</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../ToDo/">To Dos</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../about/">About</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Team 5901 - Cougar Pack</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Specialized Robot Code &raquo;</li>
+        
+      
+    
+    <li>Sensors</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="overview">Overview</h1>
+<p>Sensors are used to help the Robot understand the world around it.   <br />
+Using sensors, we can make robots react to the environment around them instead of depending on the driver to act.   <br />
+Here is sumamry of a few sensors we may use in the competition.     </p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Gyros</td>
+<td>Determines change in heading of the robot.</td>
+</tr>
+<tr>
+<td>Encoders</td>
+<td>Counts rotations of an axle. Typically used to count axle rotations to determine distance/velocity of the rotation</td>
+</tr>
+<tr>
+<td>Limit Switches</td>
+<td>Used for object detection. When in contact with an object, will send a different signal</td>
+</tr>
+<tr>
+<td>Ultrasonics</td>
+<td>Used to distance or object detection. Used only for short distances.</td>
+</tr>
+<tr>
+<td>Color sensor</td>
+<td>Used to determine color of an object.</td>
+</tr>
+</tbody>
+</table>
+<h1 id="gyros">Gyros</h1>
+<p><img alt="" src="../img/ADRSX450.JPG" /></p>
+<p>Gyros measure heading of the robot to determine what direction it is going in. <br />
+0 Degrees is defined as the angle the robot was facing when the gyro was last reset.</p>
+<p><img alt="" src="../img/Heading.JPG" /></p>
+<p><strong> Creating a Gyro object </strong>   <br />
+Place under <code>public class &lt;SUBSYSTEM&gt; extends Subsystem</code>.</p>
+<pre><code>public static ADXRS450_Gyro GYRONAME = new ADXRS450_Gyro();
+</code></pre>
+
+<p><strong> Usage </strong>   <br />
+Function | Description | Example usage
+---------|-------------|--------------
+getAngle()| get angle from gyro | &lt;examplename&gt;.getAngle();
+reset()| reset gyro heading to zero | &lt;examplename&gt;.reset(); </p>
+<h1 id="encoders">Encoders</h1>
+<p>Encoders count the revolutions of an axle.   <br />
+By understanding how many times an axle/wheel rotates, we can estimate the distance traveled.</p>
+<p><strong> AMT103-V - 5901's Drivetrain Encoder   </strong> </p>
+<p><img alt="" src="../img/AMT103-V.JPG" /></p>
+<p>5901 has used this encoder as a drivetrain encoder for years.</p>
+<p><strong> Creating a AMT103-V Encoder Object </strong>   <br />
+place under <code>public class &lt;SUBSYSTEM&gt; extends Subsystem</code></p>
+<pre><code>public static Encoder &lt;encodername&gt; = new Encoder(0, 1, false, Encoder.EncodingType.k1X) ;
+
+</code></pre>
+
+<p><strong> Parameter Setting (to be placed in Constants.java</strong>     </p>
+<pre><code>static double diameter = MEASURE_THIS; // inches
+static double distancePerRev = diameter * Math.PI;    
+static int ticksPerRev = 2048; // what you set them to , before was 2048
+
+leftEncoder = new Encoder(0, 1, false, Encoder.EncodingType.k1X);        
+leftEncoder.setDistancePerPulse(distancePerRev / ticksPerRev);          
+leftEncoder.setReverseDirection(true);      //Depends on if your mechanism runs counterclockwise or clockwise
+leftEncoder.setMaxPeriod(.1);
+leftEncoder.setMinRate(10); 
+leftEncoder.setSamplesToAverage(7);
+</code></pre>
+
+<p><strong> CTRE Magnetic Encoder - 5901's Mechanism Encoder </strong></p>
+<p><strong> Creating on object </strong></p>
+<pre><code>None! CTRE encoders are wired directly into a TalonSRX, which serves as the object
+</code></pre>
+
+<p><strong> Parameter Setting </strong></p>
+<pre><code>TALONNAME.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Absolute, 0,0);
+TALONNAME.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0,0);
+</code></pre>
+
+<pre><code>
+//Set current position to 0
+int sensorPos=0;
+elevatorEbony1.setSelectedSensorPosition(sensorPos, 0,10);
+
+elevatorEbony1.configOpenloopRamp(1.5,0);
+elevatorIvory7.configOpenloopRamp(1.5,0);
+
+elevatorIvory7.set(com.ctre.phoenix.motorcontrol.ControlMode.Follower, 1);
+
+elevatorEbony1.configForwardSoftLimitThreshold(36000,0);
+elevatorEbony1.configReverseSoftLimitThreshold(0,0);
+elevatorEbony1.configForwardSoftLimitEnable(true, 0);
+elevatorEbony1.configReverseSoftLimitEnable(true, 0);
+
+        elevatorEbony1.configNominalOutputForward(0, 0);
+elevatorEbony1.configNominalOutputReverse(0, 0);
+elevatorIvory7.configNominalOutputForward(0, 0);
+elevatorIvory7.configNominalOutputReverse(0, 0);
+elevatorEbony1.configPeakOutputForward(.5,0);    
+elevatorEbony1.configPeakOutputReverse(-.5,0);
+elevatorIvory7.configPeakOutputForward(.5,0);    
+elevatorIvory7.configPeakOutputReverse(-.5,0);
+</code></pre>
+
+<h1 id="limit-switch">Limit Switch</h1>
+<p><strong> Creating a Limit Switch Object </strong>     </p>
+<pre><code>public static DigitalInput &lt;LimitSwitchName&gt; = new Digital Input (X)
+
+</code></pre>
+
+<p>where X relates to the digital I/O port on the RoboRio.</p>
+<h1 id="ultrasonics">Ultrasonics</h1>
+<p>How do ultrasonics work?
+<img alt="" src="https://www.maxbotix.com/wp-content/uploads/2019/07/how-ultrasonic-sensors-work-1.gif" />
+<img alt="" src="../img/Ultrasonics.JPG" /></p>
+<p><strong> Creating a ultrasonic object </strong>     </p>
+<pre><code>private static final int kUltrasonicPort = 0; // 
+private static final double kValueToInches = 0.125; //Converts returned voltage to inches
+private final AnalogInput m_ultrasonic = new AnalogInput(kUltrasonicPort);
+</code></pre>
+
+<p><strong> Usage </strong></p>
+<pre><code>m_ultrasonic.getValue() * kValueToInches; // Converts signal to inches
+</code></pre>
+
+<h1 id="color-sensor">Color Sensor</h1>
+<p><img alt="" src="../img/ColorSensor.JPG" /></p>
+<p><strong> Creating a color sensor object </strong>     </p>
+<pre><code>private final I2C.Port i2cPort = i2C.Port.kOnboard;
+private final ColorSensorV3 m_colorSensor = new ColorSensorV3(i2cPort);
+private final ColorMatch m_colorMatcher = new ColorMatch();
+</code></pre>
+
+<p><strong> Defining color calibrations </strong>  <br />
+Colors are defined by 3 numbers that define their Red/Green/Blue values (RGB).   <br />
+Use the following website to determine initial calibrations: <a href="https://rgbcolorcode.com/">RGB Calculator</a>     </p>
+<p><img alt="" src="../img/RGB.JPG" /></p>
+<pre><code>public static final Color kBlueTarget = ColorMatch.makeColor(0.136, 0.412, 0.450);
+public static final Color kGreenTarget = ColorMatch.makeColor(0.196, 0.557, 0.246);
+public static final Color kRedTarget = ColorMatch.makeColor(0.475, 0.371, 0.153);
+public static final Color kYellowTarget = ColorMatch.makeColor(0.293, 0.561, 0.144);
+</code></pre>
+
+<p><strong> Usage </strong>   <br />
+Adds the colors that the robot should matched based on the above colors</p>
+<pre><code>m_colorMatcher.addColorMatch(kBlueTarget);
+m_colorMatcher.addColorMatch(kGreenTarget);
+m_colorMatcher.addColorMatch(kRedTarget);
+m_colorMatcher.addColorMatch(kYellowTarget);  
+Color detectedColor = m_colorSensor.getColor();
+
+String colorString;
+ColorMatchResult match = m_colorMatcher.matchClosestColor(detectedColor);
+
+if (match.color == kBlueTarget) {
+  colorString = &quot;Blue&quot;;
+} else if (match.color == kRedTarget) {
+  colorString = &quot;Red&quot;;
+} else if (match.color == kGreenTarget) {
+  colorString = &quot;Green&quot;;
+} else if (match.color == kYellowTarget) {
+  colorString = &quot;Yellow&quot;;
+} else {
+  colorString = &quot;Unknown&quot;;
+}
+
+SmartDashboard.putNumber(&quot;Red&quot;, detectedColor.red);
+SmartDashboard.putNumber(&quot;Green&quot;, detectedColor.green);
+SmartDashboard.putNumber(&quot;Blue&quot;, detectedColor.blue);
+SmartDashboard.putNumber(&quot;Confidence&quot;, match.confidence);
+SmartDashboard.putString(&quot;Detected Color&quot;, colorString);
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../Special - Camera/" class="btn btn-neutral float-right" title="Camera">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../Special - Motors/" class="btn btn-neutral" title="Motor Controllers"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../Special - Motors/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../Special - Camera/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

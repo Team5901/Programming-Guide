@@ -6,16 +6,19 @@ The goal is to provide students basic Java knowledge to survive build season.
 
 ## Commenting code
 
-COmments can be used to document code, but can also be used to ignore parts of code.     
+Comments can be used to document code, but can also be used to ignore parts of code.     
 Single-line comments start with two forward slashes (//).     
-Multi-line comments start with /* and ends with */.
+Multi-line comments start with /&ast; and ends with &ast;/.
 
 ```
 // This is a comment
 System.out.println("Hello World");
+
+/* everything between these are comments
+also part of a comment
+*/
 ```
 
-Any text between /* and */ will be ignored by Java.
   
 ## Variables & Data Types
 In Java, variables store data values.     

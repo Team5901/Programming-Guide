@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>About - Team 5901 - Cougar Pack</title>
+  <title>Programming the Controller - Team 5901 - Cougar Pack</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -17,8 +17,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "About";
-    var mkdocs_page_input_path = "about.md";
+    var mkdocs_page_name = "Programming the Controller";
+    var mkdocs_page_input_path = "Basic - Controllers.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -83,9 +83,25 @@
                     
     <a class="" href="../Basic - Commands/">Programming Commmands</a>
                 </li>
-                <li class="">
+                <li class=" current">
                     
-    <a class="" href="../Basic - Controllers/">Programming the Controller</a>
+    <a class="current" href="./">Programming the Controller</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#overview">Overview</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#1-creating-a-joystick-object">1. Creating a Joystick Object</a></li>
+        
+            <li><a class="toctree-l4" href="#2-creating-button-objects">2. Creating Button Objects</a></li>
+        
+            <li><a class="toctree-l4" href="#3-assigning-commands-to-buttons">3. Assigning Commands to Buttons</a></li>
+        
+        </ul>
+    
+
+    </ul>
                 </li>
     </ul>
 	    </li>
@@ -131,15 +147,9 @@
     <a class="" href="../ToDo/">To Dos</a>
 	    </li>
           
-            <li class="toctree-l1 current">
+            <li class="toctree-l1">
 		
-    <a class="current" href="./">About</a>
-    <ul class="subnav">
-            
-    <li class="toctree-l2"><a href="#to-do">To Do</a></li>
-    
-
-    </ul>
+    <a class="" href="../about/">About</a>
 	    </li>
           
         </ul>
@@ -163,8 +173,12 @@
     <li><a href="..">Docs</a> &raquo;</li>
     
       
+        
+          <li>Basic Robot Code &raquo;</li>
+        
+      
     
-    <li>About</li>
+    <li>Programming the Controller</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -174,12 +188,108 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="to-do">To Do</h1>
-<ul>
-<li>Sensors</li>
-<li>Electrical Wiring</li>
-<li>Vision</li>
-</ul>
+                <h1 id="overview">Overview</h1>
+<p>Controllers are operated by human players in order to command the robot.
+In this section, you will create the controller and button objects in Java.
+If you have completed the <a href="../Basic - Commands/">command section</a>, you can then assign commands to specific button.</p>
+<p><img alt="" src="../img/FlowRobotContainer.JPG" /></p>
+<h2 id="1-creating-a-joystick-object">1. Creating a Joystick Object</h2>
+<p>The example below declares to the program that there is an object named <controllername> that is a <code>XBoxController</code>.   <br />
+This should be placed under <strong><code>public class OI</code></strong>.      <br />
+The port number tells the computer which USB slot this controller should be in.     </p>
+<pre><code>XboxController &lt;controllername&gt; = new XboxController(0);
+</code></pre>
+
+<h2 id="2-creating-button-objects">2. Creating Button Objects</h2>
+<p>In the example above, we create a button on a xbox controller named <code>&lt;controllerName&gt;</code>.   <br />
+<strong>Note: Joysticks and the trigger are NOT considered buttons since their value can vary between 0 and 1</strong></p>
+<p>Syntax</p>
+<pre><code>new JoystickButton(&lt;controllername&gt;, &lt;buttontype&gt;)
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th>Button</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>kA</td>
+<td>A button</td>
+<td>new JoystickButton(Controller1,button.kA.value)</td>
+</tr>
+<tr>
+<td>kB</td>
+<td>B button</td>
+<td>new JoystickButton(Controller1,button.kB.value)</td>
+</tr>
+<tr>
+<td>kX</td>
+<td>X button</td>
+<td>new JoystickButton(Controller1,button.kX.value)</td>
+</tr>
+<tr>
+<td>kY</td>
+<td>Y button</td>
+<td>new JoystickButton(Controller1,button.kY.value)</td>
+</tr>
+<tr>
+<td>kBack</td>
+<td>Back button</td>
+<td>new JoystickButton(Controller1,button.kBack.value)</td>
+</tr>
+<tr>
+<td>kStart</td>
+<td>Start button</td>
+<td>new JoystickButton(Controller1,button.kStart.value)</td>
+</tr>
+<tr>
+<td>kBumperLeft</td>
+<td>Left Bumper</td>
+<td>new JoystickButton(Controller1,button.kBumperLeft.value)</td>
+</tr>
+<tr>
+<td>kBumperRight</td>
+<td>Right Bumper</td>
+<td>new JoystickButton(Controller1,button.kBumperRight.value)</td>
+</tr>
+<tr>
+<td>kStickLeft</td>
+<td>Left stick press</td>
+<td>new JoystickButton(Controller1,button.kStickLeft.value)</td>
+</tr>
+<tr>
+<td>kStickRight</td>
+<td>Right stick press</td>
+<td>new JoystickButton(Controller1,button.kStickRight.value)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="3-assigning-commands-to-buttons">3. Assigning Commands to Buttons</h2>
+<p>NOTE: To complete this section, you must have completed the <a href="../Basic - Commands/">command section</a> of the is guide.</p>
+<p>Depending on your design, you may want your buttons to behave differently.
+Here are 3 possible button types you can use, depending on your application.</p>
+<p>Add this immediately after you have created your button object.</p>
+<h6 id="whenpressed">whenPressed</h6>
+<p>Command starts when button is pressed, and it runs <strong>until</strong> the command's <strong><code>isFinished()</code></strong> method is satisfied.</p>
+<pre><code>.whenPressed(new ExampleCommand());
+</code></pre>
+
+<h6 id="whileheld-most-common">whileHeld (Most Common)</h6>
+<p>Command runs while button is held down, and is <strong>interrupted</strong> once the button is released. Note that interrupting a command does NOT automatically end it! You will need to modify the <code>interrupted()</code> method in the command by anding end(); to make sure it stops.</p>
+<pre><code>.whileHeld(new ExampleCommand());
+</code></pre>
+
+<h6 id="whenreleased">whenReleased</h6>
+<p>Start command when button is released, and run <strong>until</strong> the command's <strong><code>isFinished()</code></strong> method is satisfied.</p>
+<pre><code>.whenReleased(new ExampleCommand());
+</code></pre>
+
+<h6 id="examplecommand">ExampleCommand</h6>
+<p><img alt="" src="../img/Controller - Example.JPG" /></p>
               
             </div>
           </div>
@@ -187,8 +297,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
+        <a href="../Special - Motors/" class="btn btn-neutral float-right" title="Motor Controllers">Next <span class="icon icon-circle-arrow-right"></span></a>
       
-        <a href="../ToDo/" class="btn btn-neutral" title="To Dos"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+        <a href="../Basic - Commands/" class="btn btn-neutral" title="Programming Commmands"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -214,8 +326,10 @@
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../ToDo/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../Basic - Commands/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
+      
+        <span style="margin-left: 15px"><a href="../Special - Motors/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

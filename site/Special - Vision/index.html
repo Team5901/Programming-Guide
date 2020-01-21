@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Vision - Team 5901 - Cougar Pack</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Vision";
+    var mkdocs_page_input_path = "Special - Vision.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Team 5901 - Cougar Pack</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../design/">FRC Programming Outline</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../java/">FRC Java Basics</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Basic Robot Code</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../Basic - Conventions/">Programming Conventions</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Basic - Code Structure/">Code Structure</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Basic - Subsystems/">Programming Subsystems</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Basic - Commands/">Programming Commmands</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Basic - Controllers/">Programming the Controller</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Specialized Robot Code</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../Special - Motors/">Motor Controllers</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Special - Sensors/">Sensors</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Special - Camera/">Camera</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Vision</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#overview">Overview</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#recommended-reading">Recommended Reading</a></li>
+        
+            <li><a class="toctree-l4" href="#vision-code">Vision Code</a></li>
+        
+            <li><a class="toctree-l4" href="#visionsubsystemjava">VisionSubsystem.java</a></li>
+        
+        </ul>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Special - Pneumatics/">Pneumatics</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../autonomous/">Autonomous (In Progress)</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../update/">Updating Hardware</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../ToDo/">To Dos</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../about/">About</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Team 5901 - Cougar Pack</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Specialized Robot Code &raquo;</li>
+        
+      
+    
+    <li>Vision</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="overview">Overview</h1>
+<p>Vision can be used to aim the robot. <br />
+It is most suitable to use when targets are easily distinguishable (bright yellow cubes, orange balls), or for games that have lots of vision targets.   </p>
+<p>Implementing vision has two steps:      </p>
+<ul>
+<li>Vision detection (easy) - Camera can detect the target reliably without confusing it with surrounding objects.     </li>
+<li>Vision integration (hard) - Combining vision with the robot     </li>
+</ul>
+<p>Team 5901 utilzes the Limelight Camera.</p>
+<h2 id="recommended-reading">Recommended Reading</h2>
+<table>
+<thead>
+<tr>
+<th>Link</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mounting/Wiring/Imagine/Networking setup</td>
+<td><a href="http://docs.limelightvision.io/en/latest/getting_started.html#">http://docs.limelightvision.io/en/latest/getting_started.html#</a></td>
+</tr>
+<tr>
+<td>Theory of how a vision processing works. Highly recommended to read to understand process.</td>
+<td><a href="http://docs.limelightvision.io/en/latest/theory.html">http://docs.limelightvision.io/en/latest/theory.html</a></td>
+</tr>
+<tr>
+<td>How to tune the limelight</td>
+<td><a href="http://docs.limelightvision.io/en/latest/vision_pipeline_tuning.html">http://docs.limelightvision.io/en/latest/vision_pipeline_tuning.html</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="vision-code">Vision Code</h2>
+<p>The vision subsystem code has been created in previous years and can be reused.   <br />
+Several methods were created that can be called by different commands, can be summarized in the following table:</p>
+<table>
+<thead>
+<tr>
+<th>Method Name</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>getTx()</td>
+<td>returns horizontal offset angle to camera</td>
+<td>m_VisionSubsystem.getTx();</td>
+</tr>
+<tr>
+<td>getTy()</td>
+<td>returns vertical offset angle to camera</td>
+<td>m_VisionSubsystem.getTy();</td>
+</tr>
+<tr>
+<td>getTa()</td>
+<td>returns target area, used to approximate distance to target)</td>
+<td>m_VisionSubsystem.getTa();</td>
+</tr>
+<tr>
+<td>targetAvailable()</td>
+<td>returns a boolean if a target is detected</td>
+<td>m_VisionSubsystem.targetAvailable();</td>
+</tr>
+<tr>
+<td>turnOffLED()</td>
+<td>turns off camera lights</td>
+<td>m_VisionSubsystem.turnOffLED();</td>
+</tr>
+<tr>
+<td>turnOnLED()</td>
+<td>turns on camera lights</td>
+<td>m_VisionSubsystem.turnOnLED();</td>
+</tr>
+</tbody>
+</table>
+<h2 id="visionsubsystemjava">VisionSubsystem.java</h2>
+<pre><code>/*----------------------------------------------------------------------------*/
+/* Copyright (c) 2019 FIRST. All Rights Reserved.                             */
+/* Open Source Software - may be modified and shared by FRC teams. The code   */
+/* must be accompanied by the FIRST BSD license file in the root directory of */
+/* the project.                                                               */
+/*----------------------------------------------------------------------------*/
+
+package frc.robot.subsystems;
+
+import edu.wpi.first.networktables.NetworkTable;
+import edu.wpi.first.networktables.NetworkTableEntry;
+import edu.wpi.first.networktables.NetworkTableInstance;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
+
+public class VisionSubsystem extends SubsystemBase {
+
+  public VisionSubsystem() {   
+
+  }
+
+  //Get Horizontal Offset Angle
+  public double getTx(){
+    return NetworkTableInstance.getDefault().getTable(&quot;limelight&quot;).getEntry(&quot;tx&quot;).getDouble(0);
+  }
+
+  //Get Vertical Offset Angle
+  public double getTy(){
+    return NetworkTableInstance.getDefault().getTable(&quot;limelight&quot;).getEntry(&quot;ty&quot;).getDouble(0);
+  }
+
+  //Get Target Area
+  public double getTa(){
+    return NetworkTableInstance.getDefault().getTable(&quot;limelight&quot;).getEntry(&quot;ta&quot;).getDouble(0);
+  }
+
+  //Return true if target is available, otherwise false
+  public boolean targetAvailable(){
+    if (NetworkTableInstance.getDefault().getTable(&quot;limelight&quot;).getEntry(&quot;tv&quot;).getDouble(0) &lt; 1.0)
+    {
+      return false;
+    }
+    else
+    {
+      return true;
+    }  
+  }
+
+  public void turnOffLED(){
+    NetworkTableInstance.getDefault().getTable(&quot;limelight&quot;).getEntry(&quot;ledMode&quot;).setNumber(1);
+  }
+
+  public void turnOnLED(){
+    NetworkTableInstance.getDefault().getTable(&quot;limelight&quot;).getEntry(&quot;ledMode&quot;).setNumber(3);    
+  }
+
+  @Override
+  public void periodic() {
+    // This method will be called once per scheduler run
+  }
+}
+
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../Special - Pneumatics/" class="btn btn-neutral float-right" title="Pneumatics">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../Special - Camera/" class="btn btn-neutral" title="Camera"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../Special - Camera/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../Special - Pneumatics/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>
